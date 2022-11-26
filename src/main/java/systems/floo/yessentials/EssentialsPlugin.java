@@ -1,6 +1,7 @@
 package systems.floo.yessentials;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import systems.floo.yessentials.instances.InstanceProvider;
 
 public final class EssentialsPlugin extends JavaPlugin {
 
@@ -9,6 +10,8 @@ public final class EssentialsPlugin extends JavaPlugin {
     @Override
     public void onEnable() {
         plugin = this;
+
+        InstanceProvider.registerAllInstances();
     }
 
     @Override
