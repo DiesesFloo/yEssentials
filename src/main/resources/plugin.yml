@@ -1,0 +1,6 @@
+name: yEssentials
+version: '${project.version}'
+main: systems.floo.yessentials.EssentialsPlugin
+api-version: 1.19
+authors: [ Floo ]
+description: Minecraft Essentials Plugin
