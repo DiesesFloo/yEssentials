@@ -8,6 +8,8 @@ import systems.floo.yessentials.EssentialsPlugin;
 import systems.floo.yessentials.commands.CommandProvider;
 import systems.floo.yessentials.commands.fly.FlyCommand;
 import systems.floo.yessentials.commands.fly.FlyCommandJoinListener;
+import systems.floo.yessentials.commands.godmode.GodModeCommand;
+import systems.floo.yessentials.commands.godmode.GodModeCommandDamageListener;
 
 import java.util.ArrayList;
 
@@ -19,6 +21,9 @@ public class InstanceProvider {
     public static void registerAllInstances(){
         register(new FlyCommand());
         register(new FlyCommandJoinListener());
+
+        register(new GodModeCommand());
+        register(new GodModeCommandDamageListener());
     }
 
     public static void register(Object o){
