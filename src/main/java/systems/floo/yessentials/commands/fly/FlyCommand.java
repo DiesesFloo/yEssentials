@@ -20,22 +20,17 @@ public class FlyCommand extends Command {
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
 
-        if (!(sender instanceof Player)){
-            return false;
-        }
-
-        Player player = (Player) sender;
 
         if (args.length >= 1){
-            if (!player.hasPermission("essentials.fly.others")){
-                player.sendMessage(MessageProvider.getMessage("noperm"));
+            if (!sender.hasPermission("essentials.fly.others")){
+                sender.sendMessage(MessageProvider.getMessage("noperm"));
                 return false;
             }
 
             String playerName = args[0];
 
             if (Bukkit.getPlayer(playerName) == null){
-                player.sendMessage(MessageProvider.getMessage("playernotfound"));
+                sender.sendMessage(MessageProvider.getMessage("playernotfound"));
                 return false;
             }
 
@@ -43,20 +38,27 @@ public class FlyCommand extends Command {
 
             if (FlyCommandProvider.isFlyer(target)) {
                 FlyCommandProvider.removeFlyer(target);
-                player.sendMessage(
+                sender.sendMessage(
                         MessageProvider.getMessage("disabledflyothers")
                                 .replaceAll("%player%", target.getDisplayName())
                 );
             }
             else {
+
                 FlyCommandProvider.addFlyer(target);
-                player.sendMessage(
+                sender.sendMessage(
                         MessageProvider.getMessage("enabledflyothers")
                                 .replaceAll("%player%", target.getDisplayName())
                 );
             }
 
         }else {
+
+            if (!(sender instanceof Player)){
+                return false;
+            }
+
+            Player player = (Player) sender;
 
             if (!player.hasPermission("essentials.fly.self")){
                 player.sendMessage(MessageProvider.getMessage("noperm"));
