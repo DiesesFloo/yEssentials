@@ -6,6 +6,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import systems.floo.yessentials.EssentialsPlugin;
 import systems.floo.yessentials.commands.CommandProvider;
+import systems.floo.yessentials.commands.fly.FlyCommand;
+import systems.floo.yessentials.commands.fly.FlyCommandJoinListener;
 
 import java.util.ArrayList;
 
@@ -15,7 +17,8 @@ public class InstanceProvider {
     private static ArrayList<Object> classes = new ArrayList<>();
 
     public static void registerAllInstances(){
-
+        register(new FlyCommand());
+        register(new FlyCommandJoinListener());
     }
 
     public static void register(Object o){
