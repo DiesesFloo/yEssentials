@@ -68,7 +68,7 @@ public class FlyCommand extends Command {
             if (FlyCommandProvider.isFlyer(player)) {
                 FlyCommandProvider.removeFlyer(player);
                 player.sendMessage(
-                        MessageProvider.getMessage("enabledflyself")
+                        MessageProvider.getMessage("disabledflyself")
                                 .replaceAll("%player%", player.getDisplayName())
                 );
             }
