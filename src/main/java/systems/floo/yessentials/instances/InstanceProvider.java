@@ -10,6 +10,7 @@ import systems.floo.yessentials.commands.fly.FlyCommand;
 import systems.floo.yessentials.commands.fly.FlyCommandJoinListener;
 import systems.floo.yessentials.commands.godmode.GodModeCommand;
 import systems.floo.yessentials.commands.godmode.GodModeCommandDamageListener;
+import systems.floo.yessentials.instances.interfaces.IStartupHandler;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,10 @@ public class InstanceProvider {
 
         if (o instanceof Command){
             CommandProvider.registerCommand((Command) o);
+        }
+
+        if (o instanceof IStartupHandler){
+            ((IStartupHandler) o).handleStart();
         }
 
         classes.add(o);
