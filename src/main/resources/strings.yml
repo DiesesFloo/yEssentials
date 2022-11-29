@@ -1,0 +1,13 @@
+strings:
+  prefix: "§8[§cEssentials§8] §7"
+  messages:
+    noperm: "§7You don't have the permission to do this."
+    playernotfound: "§7This player wasn't found."
+    disabledflyothers: "§7Fly-mode was disabled for §a%player%§7."
+    enabledflyothers: "§7Fly-mode was enabled for §a%player%§7."
+    disabledflyself: "§7Fly-mode was disabled."
+    enabledflyself: "§7Fly-mode was enabled."
+    disabledgodmodeothers: "§7Godmode was disabled for §a%player%§7."
+    enabledgodmodeothers: "§7Godmode was enabled for §a%player%§7."
+    disabledgodmodeself: "§7Godmode was disabled."
+    enabledgodmodeself: "§7Godmode was enabled."
