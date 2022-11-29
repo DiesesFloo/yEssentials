@@ -1,0 +1,13 @@
+strings:
+  prefix: "§8[§cEssentials§8] §7"
+  messages:
+    noperm: ""
+    playernotfound: ""
+    disabledflyothers: ""
+    enabledflyothers: ""
+    disabledflyself: ""
+    enabledflyself: ""
+    disabledgodmodeothers: ""
+    enabledgodmodeothers: ""
+    disabledgodmodeself: ""
+    enabledgodmodeself: ""
