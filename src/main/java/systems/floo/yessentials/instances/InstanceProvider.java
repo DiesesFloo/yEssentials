@@ -19,6 +19,9 @@ public class InstanceProvider {
     private static final JavaPlugin PLUGIN = EssentialsPlugin.getPlugin();
     private static ArrayList<Object> classes = new ArrayList<>();
 
+    /**
+     * Registers all commands, events and StartupListener
+     */
     public static void registerAllInstances(){
         register(new FlyCommand());
         register(new FlyCommandJoinListener());
@@ -27,6 +30,12 @@ public class InstanceProvider {
         register(new GodModeCommandDamageListener());
     }
 
+    /**
+     * Registers an object in the array and
+     * registers it in the command map, plugin
+     * manager and executes the IStartupHandler
+     * @param o The object to register
+     */
     public static void register(Object o){
         if (o instanceof Listener){
             Bukkit.getPluginManager().registerEvents((Listener) o, PLUGIN);
@@ -43,6 +52,11 @@ public class InstanceProvider {
         classes.add(o);
     }
 
+    /**
+     * Returns a class by its type
+     * @param clazz The type of class to get
+     * @return The class
+     */
     public static  <T> T getClass(Class<T> clazz){
         if (!classExists(clazz.getName())){
             return null;
@@ -56,6 +70,12 @@ public class InstanceProvider {
 
     }
 
+    /**
+     * Returns an object from the object
+     * array by its name
+     * @param name The name of the object to get
+     * @return The object from the array
+     */
     public static Object getObject(String name){
         for (Object objects : classes){
             if (objects.getClass().getName().equals(name)){
@@ -66,6 +86,11 @@ public class InstanceProvider {
         return null;
     }
 
+    /**
+     * Checks if class is registered in object array
+     * @param name The name of the object
+     * @return Value if the class exists
+     */
     public static boolean classExists(String name){
         return getObject(name) != null;
     }

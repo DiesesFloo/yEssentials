@@ -9,6 +9,10 @@ public class FlyCommandProvider {
 
     private static ArrayList<UUID> flyers = new ArrayList<>();
 
+    /**
+     * Returns the list of the players in fly mode
+     * @return List of players in fly mode
+     */
     public static ArrayList<UUID> getFlyers() {
         return flyers;
     }

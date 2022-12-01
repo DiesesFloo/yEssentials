@@ -12,6 +12,11 @@ public class ConfigProvider {
 
     private static final JavaPlugin PLUGIN = EssentialsPlugin.getPlugin();
 
+    /**
+     * Returns an YamlConfiguration object by its path
+     * @param path The path of the config
+     * @return The config to get
+     */
     public static YamlConfiguration getCustomConfig(String path) {
         File configFile = new File(PLUGIN.getDataFolder(), path);
 
