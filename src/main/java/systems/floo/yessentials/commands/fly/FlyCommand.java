@@ -10,6 +10,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FlyCommand extends Command {
+    /**
+     * Defines command information
+     */
     public FlyCommand() {
         super("fly",
                 "Sets a player into fly mode.",
@@ -17,6 +20,13 @@ public class FlyCommand extends Command {
                 Arrays.asList(new String[]{"flymode"}));
     }
 
+    /**
+     * Method executed on command execute
+     * @param sender Source object which is executing this command
+     * @param commandLabel The alias of the command used
+     * @param args All arguments passed to the command, split via ' '
+     * @return Value if the command is successful
+     */
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
 

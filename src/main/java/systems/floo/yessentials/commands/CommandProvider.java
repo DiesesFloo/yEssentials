@@ -13,6 +13,10 @@ public class CommandProvider {
 
     private static final JavaPlugin PLUGIN = EssentialsPlugin.getPlugin();
 
+    /**
+     * Returns the Bukkit server command map
+     * @return Bukkit server command map
+     */
     public static CommandMap getCommandMap(){
         try {
             final Field bukkitCmdMap = Bukkit.getServer().getClass().getDeclaredField("commandMap");
@@ -24,6 +28,10 @@ public class CommandProvider {
         }
     }
 
+    /**
+     * Registers a command to the Bukkit server command map
+     * @param command The command to add
+     */
     public static void registerCommand(Command command) {
         Objects.requireNonNull(getCommandMap()).register(PLUGIN.getName(), command);
     }

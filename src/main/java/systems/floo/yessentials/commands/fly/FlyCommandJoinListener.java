@@ -7,6 +7,10 @@ import org.bukkit.event.player.PlayerJoinEvent;
 
 public class FlyCommandJoinListener implements Listener {
 
+    /**
+     * Method executed on player join
+     * @param event Join event
+     */
     @EventHandler
     public void handleJoin(PlayerJoinEvent event){
 

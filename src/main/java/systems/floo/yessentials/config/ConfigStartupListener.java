@@ -8,6 +8,9 @@ public class ConfigStartupListener implements IStartupHandler {
 
     private static final JavaPlugin PLUGIN = EssentialsPlugin.getPlugin();
 
+    /**
+     * Method executed on plugin enable
+     */
     @Override
     public void handleStart() {
         PLUGIN.saveResource("strings.yml", false);

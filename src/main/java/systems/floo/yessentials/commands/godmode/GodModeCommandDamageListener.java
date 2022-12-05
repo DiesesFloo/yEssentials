@@ -7,12 +7,16 @@ import org.bukkit.event.entity.EntityDamageEvent;
 
 public class GodModeCommandDamageListener implements Listener {
 
+    /**
+     * Method executed on player damage
+     * @param event Damage event
+     */
     @EventHandler
-    public void handleDamage(EntityDamageEvent e){
-        if (!(e.getEntity() instanceof Player)) return;
-        Player player = (Player) e.getEntity();
+    public void handleDamage(EntityDamageEvent event){
+        if (!(event.getEntity() instanceof Player)) return;
+        Player player = (Player) event.getEntity();
 
-        if (GodModeCommandProvider.isGodPlayer(player)) e.setCancelled(true);
+        if (GodModeCommandProvider.isGodPlayer(player)) event.setCancelled(true);
     }
 
 }

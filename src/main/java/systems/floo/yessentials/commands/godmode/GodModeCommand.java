@@ -11,7 +11,9 @@ import java.util.List;
 
 public class GodModeCommand extends Command {
 
-
+    /**
+     * Defines command information
+     */
     public GodModeCommand() {
         super("godmode",
                 "Transforms a player into a god.",
@@ -19,6 +21,13 @@ public class GodModeCommand extends Command {
                 Arrays.asList(new String[]{"god"}));
     }
 
+    /**
+     * Method executed on command execute
+     * @param sender Source object which is executing this command
+     * @param commandLabel The alias of the command used
+     * @param args All arguments passed to the command, split via ' '
+     * @return Value if the command is successful
+     */
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
 
