@@ -11,3 +11,5 @@ strings:
     enabledgodmodeothers: "&7Godmode was &aenabled &7for &6%player%&7."
     disabledgodmodeself: "&7Godmode was &cdisabled&7."
     enabledgodmodeself: "&7Godmode was &aenabled&7."
+    healself: "&7You were healed."
+    healothers: "&a%player% &7was healed."
