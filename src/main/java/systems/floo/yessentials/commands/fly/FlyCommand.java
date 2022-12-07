@@ -92,6 +92,6 @@ public class FlyCommand extends Command {
 
         }
 
-        return false;
+        return true;
     }
 }

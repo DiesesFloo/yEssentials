@@ -86,6 +86,6 @@ public class GodModeCommand extends Command {
             }
         }
 
-        return false;
+        return true;
     }
 }
