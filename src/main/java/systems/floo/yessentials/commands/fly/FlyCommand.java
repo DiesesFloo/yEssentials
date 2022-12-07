@@ -37,14 +37,14 @@ public class FlyCommand extends Command {
                 return false;
             }
 
-            String playerName = args[0];
+            String targetName = args[0];
 
-            if (Bukkit.getPlayer(playerName) == null){
+            if (Bukkit.getPlayer(targetName) == null){
                 sender.sendMessage(MessageProvider.getMessage("playernotfound"));
                 return false;
             }
 
-            Player target = Bukkit.getPlayer(playerName);
+            Player target = Bukkit.getPlayer(targetName);
 
             if (FlyCommandProvider.isFlyer(target)) {
                 FlyCommandProvider.removeFlyer(target);

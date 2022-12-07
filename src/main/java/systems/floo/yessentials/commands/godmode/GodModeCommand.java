@@ -37,14 +37,14 @@ public class GodModeCommand extends Command {
                 sender.sendMessage(MessageProvider.getMessage("noperm"));
             }
 
-            String playerName = args[0];
+            String targetName = args[0];
 
-            if (Bukkit.getPlayer(playerName) == null){
+            if (Bukkit.getPlayer(targetName) == null){
                 sender.sendMessage(MessageProvider.getMessage("playernotfound"));
                 return false;
             }
 
-            Player target = Bukkit.getPlayer(playerName);
+            Player target = Bukkit.getPlayer(targetName);
 
             if (GodModeCommandProvider.isGodPlayer(target)){
                 GodModeCommandProvider.removeGodPlayer(target);
