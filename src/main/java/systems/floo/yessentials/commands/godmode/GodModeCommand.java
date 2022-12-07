@@ -7,7 +7,6 @@ import org.bukkit.entity.Player;
 import systems.floo.yessentials.messages.MessageProvider;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class GodModeCommand extends Command {
 
