@@ -21,7 +21,7 @@ public final class EssentialsPlugin extends JavaPlugin {
 
     /**
      * Returns the main class in form of {@link JavaPlugin} object.
-     * @return
+     * @return Plugin object of main
      */
     public static JavaPlugin getPlugin() {
         return plugin;
