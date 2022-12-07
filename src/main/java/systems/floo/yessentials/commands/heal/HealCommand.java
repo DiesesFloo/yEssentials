@@ -10,6 +10,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class HealCommand extends Command {
+
+    /**
+     * Defines command information
+     */
     public HealCommand() {
         super("heal",
                 "Heals a player",
@@ -17,6 +21,13 @@ public class HealCommand extends Command {
                 Arrays.asList(new String[]{"healplayer"}));
     }
 
+    /**
+     * Method executed on command execute
+     * @param sender Source object which is executing this command
+     * @param commandLabel The alias of the command used
+     * @param args All arguments passed to the command, split via ' '
+     * @return Value if the command is successful
+     */
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
         if (args.length >= 1){
