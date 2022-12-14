@@ -34,9 +34,9 @@ public class InstanceProvider {
     }
 
     /**
-     * Registers an object in the array and
-     * registers it in the command map, plugin
-     * manager and executes the IStartupHandler
+     * Registers an object in the array and* registers it in the {@link org.bukkit.command.CommandMap},
+     * {@link org.bukkit.plugin.PluginManager}
+     * and executes the {@link IStartupHandler}
      * @param o The object to register
      */
     public static void register(Object o){
