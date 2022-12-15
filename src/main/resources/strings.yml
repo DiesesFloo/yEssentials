@@ -13,3 +13,7 @@ strings:
     enabledgodmodeself: "&7Godmode was &aenabled&7."
     healself: "&7You were healed."
     healothers: "&a%player% &7was healed."
+    repairself: "&7The item in your main hand was repaired."
+    repairothers: "&7The item in the main hand of &6%player% &7was repaired."
+    repairallself: "&7All items in your inventory were repaired."
+    repairallothers: "&7All items in the inventory of &6%player% were repaired."
