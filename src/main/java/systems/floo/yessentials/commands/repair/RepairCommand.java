@@ -22,25 +22,26 @@ public class RepairCommand extends Command {
 
     /**
      * Method executed on command execute
-     * @param sender Source object which is executing this command
+     *
+     * @param sender       Source object which is executing this command
      * @param commandLabel The alias of the command used
-     * @param args All arguments passed to the command, split via ' '
+     * @param args         All arguments passed to the command, split via ' '
      * @return Value if the command is successful
      */
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
 
-        if (args.length >= 1){
-            if (args[0].equalsIgnoreCase("all")){
-                if (args.length >= 2){
-                    if (!sender.hasPermission("essentials.repairall.others")){
+        if (args.length >= 1) {
+            if (args[0].equalsIgnoreCase("all")) {
+                if (args.length >= 2) {
+                    if (!sender.hasPermission("essentials.repairall.others")) {
                         sender.sendMessage(MessageProvider.getMessage("noperm"));
                         return false;
                     }
 
                     Player target = Bukkit.getPlayer(args[1]);
 
-                    if (target == null){
+                    if (target == null) {
                         sender.sendMessage(MessageProvider.getMessage("playernotfound"));
                         return false;
                     }
@@ -59,13 +60,13 @@ public class RepairCommand extends Command {
                     return true;
                 }
 
-                if (!(sender instanceof Player)){
+                if (!(sender instanceof Player)) {
                     return false;
                 }
 
                 Player player = (Player) sender;
 
-                if (!player.hasPermission("essentials.repairall.self")){
+                if (!player.hasPermission("essentials.repairall.self")) {
                     player.sendMessage(MessageProvider.getMessage("noperm"));
                     return false;
                 }
@@ -78,14 +79,14 @@ public class RepairCommand extends Command {
 
             }
 
-            if (!sender.hasPermission("essentials.repair.others")){
+            if (!sender.hasPermission("essentials.repair.others")) {
                 sender.sendMessage(MessageProvider.getMessage("noperm"));
                 return false;
             }
 
             Player target = Bukkit.getPlayer(args[0]);
 
-            if (target == null){
+            if (target == null) {
                 sender.sendMessage(MessageProvider.getMessage("playernotfound"));
                 return false;
             }
@@ -104,13 +105,13 @@ public class RepairCommand extends Command {
 
         }
 
-        if (!(sender instanceof Player)){
+        if (!(sender instanceof Player)) {
             return false;
         }
 
         Player player = (Player) sender;
 
-        if (!player.hasPermission("essentials.repair.self")){
+        if (!player.hasPermission("essentials.repair.self")) {
             player.sendMessage(MessageProvider.getMessage("noperm"));
             return false;
         }

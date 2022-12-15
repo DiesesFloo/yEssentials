@@ -22,22 +22,23 @@ public class HealCommand extends Command {
 
     /**
      * Method executed on command execute
-     * @param sender Source object which is executing this command
+     *
+     * @param sender       Source object which is executing this command
      * @param commandLabel The alias of the command used
-     * @param args All arguments passed to the command, split via ' '
+     * @param args         All arguments passed to the command, split via ' '
      * @return Value if the command is successful
      */
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-        if (args.length >= 1){
-            if (!sender.hasPermission("essentials.heal.others")){
+        if (args.length >= 1) {
+            if (!sender.hasPermission("essentials.heal.others")) {
                 sender.sendMessage(MessageProvider.getMessage("noperm"));
                 return false;
             }
 
             String targetName = args[0];
 
-            if (Bukkit.getPlayer(targetName) == null){
+            if (Bukkit.getPlayer(targetName) == null) {
                 sender.sendMessage(MessageProvider.getMessage("playernotfound"));
                 return false;
             }
@@ -51,22 +52,23 @@ public class HealCommand extends Command {
 
             target.sendMessage(MessageProvider.getMessage("healself")
                     .replaceAll("%player%", target.getDisplayName()));
-        }else {
-            if (!(sender instanceof Player)){
-                return false;
-            }
 
-            Player player = (Player) sender;
-
-            if (!player.hasPermission("essentials.heal.self")){
-                player.sendMessage(MessageProvider.getMessage("noperm"));
-                return false;
-            }
-
-            player.setHealth(20);
-            player.sendMessage(MessageProvider.getMessage("healself")
-                    .replaceAll("%player%", player.getDisplayName()));
+            return true;
         }
+        if (!(sender instanceof Player)) {
+            return false;
+        }
+
+        Player player = (Player) sender;
+
+        if (!player.hasPermission("essentials.heal.self")) {
+            player.sendMessage(MessageProvider.getMessage("noperm"));
+            return false;
+        }
+
+        player.setHealth(20);
+        player.sendMessage(MessageProvider.getMessage("healself")
+                .replaceAll("%player%", player.getDisplayName()));
 
         return true;
     }

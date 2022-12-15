@@ -21,24 +21,25 @@ public class FlyCommand extends Command {
 
     /**
      * Method executed on command execute
-     * @param sender Source object which is executing this command
+     *
+     * @param sender       Source object which is executing this command
      * @param commandLabel The alias of the command used
-     * @param args All arguments passed to the command, split via ' '
+     * @param args         All arguments passed to the command, split via ' '
      * @return Value if the command is successful
      */
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
 
 
-        if (args.length >= 1){
-            if (!sender.hasPermission("essentials.fly.others")){
+        if (args.length >= 1) {
+            if (!sender.hasPermission("essentials.fly.others")) {
                 sender.sendMessage(MessageProvider.getMessage("noperm"));
                 return false;
             }
 
             String targetName = args[0];
 
-            if (Bukkit.getPlayer(targetName) == null){
+            if (Bukkit.getPlayer(targetName) == null) {
                 sender.sendMessage(MessageProvider.getMessage("playernotfound"));
                 return false;
             }
@@ -51,8 +52,7 @@ public class FlyCommand extends Command {
                         MessageProvider.getMessage("disabledflyothers")
                                 .replaceAll("%player%", target.getDisplayName())
                 );
-            }
-            else {
+            } else {
 
                 FlyCommandProvider.addFlyer(target);
                 sender.sendMessage(
@@ -61,35 +61,35 @@ public class FlyCommand extends Command {
                 );
             }
 
-        }else {
-
-            if (!(sender instanceof Player)){
-                return false;
-            }
-
-            Player player = (Player) sender;
-
-            if (!player.hasPermission("essentials.fly.self")){
-                player.sendMessage(MessageProvider.getMessage("noperm"));
-                return false;
-            }
-
-            if (FlyCommandProvider.isFlyer(player)) {
-                FlyCommandProvider.removeFlyer(player);
-                player.sendMessage(
-                        MessageProvider.getMessage("disabledflyself")
-                                .replaceAll("%player%", player.getDisplayName())
-                );
-            }
-            else {
-                FlyCommandProvider.addFlyer(player);
-                player.sendMessage(
-                        MessageProvider.getMessage("enabledflyself")
-                                .replaceAll("%player%", player.getDisplayName())
-                );
-            }
+            return true;
 
         }
+
+        if (!(sender instanceof Player)) {
+            return false;
+        }
+
+        Player player = (Player) sender;
+
+        if (!player.hasPermission("essentials.fly.self")) {
+            player.sendMessage(MessageProvider.getMessage("noperm"));
+            return false;
+        }
+
+        if (FlyCommandProvider.isFlyer(player)) {
+            FlyCommandProvider.removeFlyer(player);
+            player.sendMessage(
+                    MessageProvider.getMessage("disabledflyself")
+                            .replaceAll("%player%", player.getDisplayName())
+            );
+        } else {
+            FlyCommandProvider.addFlyer(player);
+            player.sendMessage(
+                    MessageProvider.getMessage("enabledflyself")
+                            .replaceAll("%player%", player.getDisplayName())
+            );
+        }
+
 
         return true;
     }

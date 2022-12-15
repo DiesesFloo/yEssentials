@@ -25,7 +25,7 @@ public class InstanceProvider {
     /**
      * Registers all commands, events and StartupListener
      */
-    public static void registerAllInstances(){
+    public static void registerAllInstances() {
         register(new FlyCommand());
         register(new FlyCommandJoinListener());
 
@@ -42,18 +42,19 @@ public class InstanceProvider {
      * Registers an object in the array and* registers it in the {@link org.bukkit.command.CommandMap},
      * {@link org.bukkit.plugin.PluginManager}
      * and executes the {@link IStartupHandler}
+     *
      * @param o The object to register
      */
-    public static void register(Object o){
-        if (o instanceof Listener){
+    public static void register(Object o) {
+        if (o instanceof Listener) {
             Bukkit.getPluginManager().registerEvents((Listener) o, PLUGIN);
         }
 
-        if (o instanceof Command){
+        if (o instanceof Command) {
             CommandProvider.registerCommand((Command) o);
         }
 
-        if (o instanceof IStartupHandler){
+        if (o instanceof IStartupHandler) {
             ((IStartupHandler) o).handleStart();
         }
 
@@ -62,17 +63,18 @@ public class InstanceProvider {
 
     /**
      * Returns a class by its type
+     *
      * @param clazz The type of class to get
      * @return The class
      */
-    public static  <T> T getClass(Class<T> clazz){
-        if (!classExists(clazz.getName())){
+    public static <T> T getClass(Class<T> clazz) {
+        if (!classExists(clazz.getName())) {
             return null;
         }
 
         try {
             return clazz.cast(getObject(clazz.getName()));
-        } catch (ClassCastException e){
+        } catch (ClassCastException e) {
             return null;
         }
 
@@ -81,12 +83,13 @@ public class InstanceProvider {
     /**
      * Returns an object from the object
      * array by its name
+     *
      * @param name The name of the object to get
      * @return The object from the array
      */
-    public static Object getObject(String name){
-        for (Object objects : classes){
-            if (objects.getClass().getName().equals(name)){
+    public static Object getObject(String name) {
+        for (Object objects : classes) {
+            if (objects.getClass().getName().equals(name)) {
                 return objects;
             }
         }
@@ -96,10 +99,11 @@ public class InstanceProvider {
 
     /**
      * Checks if class is registered in object array
+     *
      * @param name The name of the object
      * @return Value if the class exists
      */
-    public static boolean classExists(String name){
+    public static boolean classExists(String name) {
         return getObject(name) != null;
     }
 

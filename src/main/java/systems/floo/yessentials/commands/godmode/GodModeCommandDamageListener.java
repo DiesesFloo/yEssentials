@@ -9,10 +9,11 @@ public class GodModeCommandDamageListener implements Listener {
 
     /**
      * Method executed on player damage
+     *
      * @param event Damage event
      */
     @EventHandler
-    public void handleDamage(EntityDamageEvent event){
+    public void handleDamage(EntityDamageEvent event) {
         if (!(event.getEntity() instanceof Player)) return;
         Player player = (Player) event.getEntity();
 

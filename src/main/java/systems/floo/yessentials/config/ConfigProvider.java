@@ -14,13 +14,14 @@ public class ConfigProvider {
 
     /**
      * Returns an YamlConfiguration object by its path
+     *
      * @param path The path of the config
      * @return The config to get
      */
     public static YamlConfiguration getCustomConfig(String path) {
         File configFile = new File(PLUGIN.getDataFolder(), path);
 
-        if (!configFile.exists()){
+        if (!configFile.exists()) {
             PLUGIN.saveResource(path, false);
         }
 
@@ -28,7 +29,7 @@ public class ConfigProvider {
 
         try {
             config.load(configFile);
-        } catch (IOException | InvalidConfigurationException e){
+        } catch (IOException | InvalidConfigurationException e) {
             e.printStackTrace();
         }
 
