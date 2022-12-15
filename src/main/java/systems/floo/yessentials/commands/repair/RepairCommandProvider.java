@@ -14,11 +14,17 @@ public class RepairCommandProvider {
      * @param i The {@link ItemStack} to repair
      */
     public static void repairItem(ItemStack i) {
+        if(i == null){
+            return;
+        }
+
         ItemMeta meta = i.getItemMeta();
 
-        if (meta != null) {
-            ((Damageable) meta).setDamage(0);
+        if (meta == null){
+            return;
         }
+
+        ((Damageable) meta).setDamage(0);
 
         i.setItemMeta(meta);
     }
