@@ -10,6 +10,7 @@ import systems.floo.yessentials.commands.fly.FlyCommand;
 import systems.floo.yessentials.commands.fly.FlyCommandJoinListener;
 import systems.floo.yessentials.commands.godmode.GodModeCommand;
 import systems.floo.yessentials.commands.godmode.GodModeCommandDamageListener;
+import systems.floo.yessentials.commands.godmode.GodModeCommandFoodListener;
 import systems.floo.yessentials.commands.heal.HealCommand;
 import systems.floo.yessentials.commands.repair.RepairAllCommand;
 import systems.floo.yessentials.commands.repair.RepairCommand;
@@ -31,6 +32,7 @@ public class InstanceProvider {
 
         register(new GodModeCommand());
         register(new GodModeCommandDamageListener());
+        register(new GodModeCommandFoodListener());
 
         register(new HealCommand());
 
