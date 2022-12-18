@@ -9,6 +9,10 @@ import systems.floo.yessentials.messages.MessageProvider;
 import java.util.Arrays;
 
 public class FeedCommand extends Command {
+
+    /**
+     * Defines command information
+     */
     public FeedCommand() {
         super("feed",
                 "Feeds a player",
@@ -16,6 +20,14 @@ public class FeedCommand extends Command {
                 Arrays.asList(new String[]{"feedplayer"}));
     }
 
+    /**
+     * Method executed on command execute
+     *
+     * @param sender       Source object which is executing this command
+     * @param commandLabel The alias of the command used
+     * @param args         All arguments passed to the command, split via ' '
+     * @return Value if the command is successful
+     */
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
         if (args.length >= 1){
