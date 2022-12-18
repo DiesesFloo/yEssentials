@@ -3,17 +3,17 @@ package systems.floo.yessentials.commands.godmode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.FoodLevelChangeEvent;
 
-public class GodModeCommandDamageListener implements Listener {
+public class GodModeCommandFoodListener implements Listener {
 
     /**
      * Method executed on player damage
      *
-     * @param event Damage event
+     * @param event Food level change event
      */
     @EventHandler
-    public void handleDamage(EntityDamageEvent event) {
+    public void handleFoodLevelChange(FoodLevelChangeEvent event){
         if (!(event.getEntity() instanceof Player)) return;
         Player player = (Player) event.getEntity();
 

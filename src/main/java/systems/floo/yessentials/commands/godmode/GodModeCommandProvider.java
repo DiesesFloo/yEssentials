@@ -9,19 +9,40 @@ public class GodModeCommandProvider {
 
     private static ArrayList<UUID> godPlayers = new ArrayList<>();
 
+    /**
+     * Returns the list of the players in god mode
+     *
+     * @return List of players in god mode
+     */
     public static ArrayList<UUID> getGodPlayers() {
         return godPlayers;
     }
 
-    public static boolean isGodPlayer(Player p){
+    /**
+     * Checks if a player is in god mode
+     *
+     * @param p The player to check if he's in god mode
+     * @return Returns if the player is in god mode
+     */
+    public static boolean isGodPlayer(Player p) {
         return godPlayers.contains(p.getUniqueId());
     }
 
-    public static void addGodPlayer(Player p){
+    /**
+     * Adds a player to the god mode player list
+     *
+     * @param p The player to add
+     */
+    public static void addGodPlayer(Player p) {
         godPlayers.add(p.getUniqueId());
     }
 
-    public static void removeGodPlayer(Player p){
+    /**
+     * Removes a player from the god mode player list
+     *
+     * @param p The player to remove
+     */
+    public static void removeGodPlayer(Player p) {
         godPlayers.remove(p.getUniqueId());
     }
 }

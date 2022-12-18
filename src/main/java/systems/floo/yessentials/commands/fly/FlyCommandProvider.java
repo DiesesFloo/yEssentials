@@ -9,21 +9,42 @@ public class FlyCommandProvider {
 
     private static ArrayList<UUID> flyers = new ArrayList<>();
 
+    /**
+     * Returns the list of the players in fly mode
+     *
+     * @return List of players in fly mode
+     */
     public static ArrayList<UUID> getFlyers() {
         return flyers;
     }
 
-    public static boolean isFlyer(Player p){
+    /**
+     * Checks if a player is in fly mode
+     *
+     * @param p The player to check if he's in fly mode
+     * @return Returns if the player is in fly mode
+     */
+    public static boolean isFlyer(Player p) {
         return flyers.contains(p.getUniqueId());
     }
 
-    public static void addFlyer(Player p){
+    /**
+     * Adds a player into the flyer list and sets him into fly mode
+     *
+     * @param p The player to add
+     */
+    public static void addFlyer(Player p) {
         flyers.add(p.getUniqueId());
         p.setAllowFlight(true);
         p.setFlying(true);
     }
 
-    public static void removeFlyer(Player p){
+    /**
+     * Removes a player from the flyer list and sets him back into normal mode
+     *
+     * @param p The player to remove
+     */
+    public static void removeFlyer(Player p) {
         flyers.remove(p.getUniqueId());
         p.setAllowFlight(false);
         p.setFlying(false);
