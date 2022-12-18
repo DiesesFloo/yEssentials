@@ -52,11 +52,20 @@ public class FlyCommand extends Command {
                         MessageProvider.getMessage("disabledflyothers")
                                 .replaceAll("%player%", target.getDisplayName())
                 );
+
+                target.sendMessage(
+                        MessageProvider.getMessage("disabledflyself")
+                                .replaceAll("%player%", target.getDisplayName())
+                );
             } else {
 
                 FlyCommandProvider.addFlyer(target);
                 sender.sendMessage(
                         MessageProvider.getMessage("enabledflyothers")
+                                .replaceAll("%player%", target.getDisplayName())
+                );
+                target.sendMessage(
+                        MessageProvider.getMessage("enabledflyself")
                                 .replaceAll("%player%", target.getDisplayName())
                 );
             }

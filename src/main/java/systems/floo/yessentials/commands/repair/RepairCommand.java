@@ -103,6 +103,8 @@ public class RepairCommand extends Command {
                             .replaceAll("%player%", target.getDisplayName())
             );
 
+            return true;
+
         }
 
         if (!(sender instanceof Player)) {
