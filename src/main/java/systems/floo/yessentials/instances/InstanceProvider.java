@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import systems.floo.yessentials.EssentialsPlugin;
 import systems.floo.yessentials.commands.CommandProvider;
+import systems.floo.yessentials.commands.feed.FeedCommand;
 import systems.floo.yessentials.commands.fly.FlyCommand;
 import systems.floo.yessentials.commands.fly.FlyCommandJoinListener;
 import systems.floo.yessentials.commands.godmode.GodModeCommand;
@@ -38,6 +39,8 @@ public class InstanceProvider {
 
         register(new RepairAllCommand());
         register(new RepairCommand());
+
+        register(new FeedCommand());
     }
 
     /**
