@@ -49,8 +49,13 @@ public class GodModeCommand extends Command {
 
             if (GodModeCommandProvider.isGodPlayer(target)) {
                 GodModeCommandProvider.removeGodPlayer(target);
-                target.sendMessage(
+
+                sender.sendMessage(
                         MessageProvider.getMessage("disabledgodmodeothers")
+                                .replaceAll("%player%", target.getDisplayName())
+                );
+                target.sendMessage(
+                        MessageProvider.getMessage("disabledgodmodeself")
                                 .replaceAll("%player%", target.getDisplayName())
                 );
 
@@ -58,8 +63,12 @@ public class GodModeCommand extends Command {
             }
 
             GodModeCommandProvider.addGodPlayer(target);
-            target.sendMessage(
+            sender.sendMessage(
                     MessageProvider.getMessage("enabledgodmodeothers")
+                            .replaceAll("%player%", target.getDisplayName())
+            );
+            target.sendMessage(
+                    MessageProvider.getMessage("enabledgodmodeself")
                             .replaceAll("%player%", target.getDisplayName())
             );
 
