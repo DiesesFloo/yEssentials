@@ -35,6 +35,7 @@ public class GodModeCommand extends Command {
 
             if (!sender.hasPermission("essentials.godmode.others")) {
                 sender.sendMessage(MessageProvider.getMessage("noperm"));
+                return false;
             }
 
             String targetName = args[0];
@@ -73,6 +74,7 @@ public class GodModeCommand extends Command {
 
         if (!player.hasPermission("essentials.godmode.self")) {
             player.sendMessage(MessageProvider.getMessage("noperm"));
+            return false;
         }
 
         if (GodModeCommandProvider.isGodPlayer(player)) {
