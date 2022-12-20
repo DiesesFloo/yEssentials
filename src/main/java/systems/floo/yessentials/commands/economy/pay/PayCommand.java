@@ -15,6 +15,9 @@ import java.util.Arrays;
 import java.util.UUID;
 
 public class PayCommand extends Command {
+    /**
+     * Defines command information
+     */
     public PayCommand() {
         super("pay",
                 "Pays money to another player.",
@@ -22,6 +25,14 @@ public class PayCommand extends Command {
                 Arrays.asList(new String[]{"paymoney"}));
     }
 
+    /**
+     * Method executed on command execute
+     *
+     * @param sender       Source object which is executing this command
+     * @param commandLabel The alias of the command used
+     * @param args         All arguments passed to the command, split via ' '
+     * @return Value if the command is successful
+     */
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
         if (!(sender instanceof Player)){
