@@ -2,8 +2,10 @@ strings:
   prefixes:
     main: "&c&lEssentials &8× &7"
     broadcast: "&6&lBroadcast &8× &7"
+    economy: "&2&lEconomy &8× &7"
   messages:
     noperm: "&7You don't have the permission to do this."
+    wronguse: "&7Wrong use. Try &6/help &7for more information."
     playernotfound: "&7This player wasn't found."
     disabledflyothers: "&7Fly-mode was &cdisabled &7for &6%player%&7."
     enabledflyothers: "&7Fly-mode was &aenabled &7for &6%player%&7."
@@ -27,3 +29,9 @@ strings:
     vanishothers: "&6%player% is now &ainvisible."
     unvanishself: "&7You're no longer &cinvisible&7."
     unvanishothers: "&6%player% is no longer &cinvisible."
+    economynotregisteredself: "&7You're not registered."
+    economynotregisteredothers: "&7This player isn't registered."
+    economynotenoughmoney: "&7You don't have enough money for this."
+    economynonumber: "&7The given number is not a number"
+    paysent: "You sent &2%amount% &7coins to &6%player2%&7."
+    payreceived: "You received &2%amount% &7coins from &6%player1%&7."
