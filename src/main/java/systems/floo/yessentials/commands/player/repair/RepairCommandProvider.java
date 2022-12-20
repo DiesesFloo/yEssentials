@@ -1,4 +1,4 @@
-package systems.floo.yessentials.commands.repair;
+package systems.floo.yessentials.commands.player.repair;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;

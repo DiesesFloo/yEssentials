@@ -1,4 +1,4 @@
-package systems.floo.yessentials.commands.repair;
+package systems.floo.yessentials.commands.player.feed;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -8,17 +8,16 @@ import systems.floo.yessentials.messages.MessageProvider;
 
 import java.util.Arrays;
 
-public class RepairAllCommand extends Command {
-
+public class FeedCommand extends Command {
 
     /**
      * Defines command information
      */
-    public RepairAllCommand() {
-        super("repairall",
-                "Repairs the durability of all items in inventory",
+    public FeedCommand() {
+        super("feed",
+                "Feeds a player",
                 "",
-                Arrays.asList(new String[]{"repairinventory"}));
+                Arrays.asList(new String[]{"feedplayer"}));
     }
 
     /**
@@ -31,43 +30,51 @@ public class RepairAllCommand extends Command {
      */
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-        if (args.length >= 1) {
-            if (!sender.hasPermission("essentials.repairall.others")) {
+        if (args.length >= 1){
+            if (!sender.hasPermission("essentials.feed.others")){
                 sender.sendMessage(MessageProvider.getMessage("noperm"));
                 return false;
             }
 
             Player target = Bukkit.getPlayer(args[0]);
 
-            if (target == null) {
+            if (target == null){
                 sender.sendMessage(MessageProvider.getMessage("playernotfound"));
                 return false;
             }
 
-            RepairCommandProvider.repairInventory(target);
+            target.setFoodLevel(20);
+
             sender.sendMessage(
-                    MessageProvider.getMessage("repairallothers")
+                    MessageProvider.getMessage("feedothers")
                             .replaceAll("%player%", target.getDisplayName())
             );
 
             target.sendMessage(
-                    MessageProvider.getMessage("repairallself")
+                    MessageProvider.getMessage("feedself")
                             .replaceAll("%player%", target.getDisplayName())
             );
 
             return true;
         }
 
+        if (!(sender instanceof Player)){
+            return false;
+        }
+
         Player player = (Player) sender;
 
-        if (!player.hasPermission("essentials.repairall.self")) {
+        if (!player.hasPermission("essentials.feed.self")){
             player.sendMessage(MessageProvider.getMessage("noperm"));
             return false;
         }
 
-        RepairCommandProvider.repairInventory(player);
-        player.sendMessage(MessageProvider.getMessage("repairallself")
-                .replaceAll("%player%", player.getDisplayName()));
+        player.setFoodLevel(20);
+
+        player.sendMessage(
+                MessageProvider.getMessage("feedself")
+                        .replaceAll("%player%", player.getDisplayName())
+        );
 
         return true;
     }

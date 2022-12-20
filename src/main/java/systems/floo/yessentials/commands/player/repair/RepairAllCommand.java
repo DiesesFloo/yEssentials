@@ -1,4 +1,4 @@
-package systems.floo.yessentials.commands.heal;
+package systems.floo.yessentials.commands.player.repair;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -8,16 +8,17 @@ import systems.floo.yessentials.messages.MessageProvider;
 
 import java.util.Arrays;
 
-public class HealCommand extends Command {
+public class RepairAllCommand extends Command {
+
 
     /**
      * Defines command information
      */
-    public HealCommand() {
-        super("heal",
-                "Heals a player",
+    public RepairAllCommand() {
+        super("repairall",
+                "Repairs the durability of all items in inventory",
                 "",
-                Arrays.asList(new String[]{"healplayer"}));
+                Arrays.asList(new String[]{"repairinventory"}));
     }
 
     /**
@@ -31,43 +32,41 @@ public class HealCommand extends Command {
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
         if (args.length >= 1) {
-            if (!sender.hasPermission("essentials.heal.others")) {
+            if (!sender.hasPermission("essentials.repairall.others")) {
                 sender.sendMessage(MessageProvider.getMessage("noperm"));
                 return false;
             }
 
-            String targetName = args[0];
-
-            Player target = Bukkit.getPlayer(targetName);
+            Player target = Bukkit.getPlayer(args[0]);
 
             if (target == null) {
                 sender.sendMessage(MessageProvider.getMessage("playernotfound"));
                 return false;
             }
 
-            target.setHealth(20);
+            RepairCommandProvider.repairInventory(target);
+            sender.sendMessage(
+                    MessageProvider.getMessage("repairallothers")
+                            .replaceAll("%player%", target.getDisplayName())
+            );
 
-            sender.sendMessage(MessageProvider.getMessage("healothers")
-                    .replaceAll("%player%", target.getDisplayName()));
-
-            target.sendMessage(MessageProvider.getMessage("healself")
-                    .replaceAll("%player%", target.getDisplayName()));
+            target.sendMessage(
+                    MessageProvider.getMessage("repairallself")
+                            .replaceAll("%player%", target.getDisplayName())
+            );
 
             return true;
-        }
-        if (!(sender instanceof Player)) {
-            return false;
         }
 
         Player player = (Player) sender;
 
-        if (!player.hasPermission("essentials.heal.self")) {
+        if (!player.hasPermission("essentials.repairall.self")) {
             player.sendMessage(MessageProvider.getMessage("noperm"));
             return false;
         }
 
-        player.setHealth(20);
-        player.sendMessage(MessageProvider.getMessage("healself")
+        RepairCommandProvider.repairInventory(player);
+        player.sendMessage(MessageProvider.getMessage("repairallself")
                 .replaceAll("%player%", player.getDisplayName()));
 
         return true;

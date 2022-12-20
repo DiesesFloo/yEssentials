@@ -1,4 +1,4 @@
-package systems.floo.yessentials.commands.feed;
+package systems.floo.yessentials.commands.player.heal;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -8,16 +8,16 @@ import systems.floo.yessentials.messages.MessageProvider;
 
 import java.util.Arrays;
 
-public class FeedCommand extends Command {
+public class HealCommand extends Command {
 
     /**
      * Defines command information
      */
-    public FeedCommand() {
-        super("feed",
-                "Feeds a player",
+    public HealCommand() {
+        super("heal",
+                "Heals a player",
                 "",
-                Arrays.asList(new String[]{"feedplayer"}));
+                Arrays.asList(new String[]{"healplayer"}));
     }
 
     /**
@@ -30,51 +30,45 @@ public class FeedCommand extends Command {
      */
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-        if (args.length >= 1){
-            if (!sender.hasPermission("essentials.feed.others")){
+        if (args.length >= 1) {
+            if (!sender.hasPermission("essentials.heal.others")) {
                 sender.sendMessage(MessageProvider.getMessage("noperm"));
                 return false;
             }
 
-            Player target = Bukkit.getPlayer(args[0]);
+            String targetName = args[0];
 
-            if (target == null){
+            Player target = Bukkit.getPlayer(targetName);
+
+            if (target == null) {
                 sender.sendMessage(MessageProvider.getMessage("playernotfound"));
                 return false;
             }
 
-            target.setFoodLevel(20);
+            target.setHealth(20);
 
-            sender.sendMessage(
-                    MessageProvider.getMessage("feedothers")
-                            .replaceAll("%player%", target.getDisplayName())
-            );
+            sender.sendMessage(MessageProvider.getMessage("healothers")
+                    .replaceAll("%player%", target.getDisplayName()));
 
-            target.sendMessage(
-                    MessageProvider.getMessage("feedself")
-                            .replaceAll("%player%", target.getDisplayName())
-            );
+            target.sendMessage(MessageProvider.getMessage("healself")
+                    .replaceAll("%player%", target.getDisplayName()));
 
             return true;
         }
-
-        if (!(sender instanceof Player)){
+        if (!(sender instanceof Player)) {
             return false;
         }
 
         Player player = (Player) sender;
 
-        if (!player.hasPermission("essentials.feed.self")){
+        if (!player.hasPermission("essentials.heal.self")) {
             player.sendMessage(MessageProvider.getMessage("noperm"));
             return false;
         }
 
-        player.setFoodLevel(20);
-
-        player.sendMessage(
-                MessageProvider.getMessage("feedself")
-                        .replaceAll("%player%", player.getDisplayName())
-        );
+        player.setHealth(20);
+        player.sendMessage(MessageProvider.getMessage("healself")
+                .replaceAll("%player%", player.getDisplayName()));
 
         return true;
     }

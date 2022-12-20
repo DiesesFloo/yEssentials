@@ -1,4 +1,4 @@
-package systems.floo.yessentials.commands.broadcast;
+package systems.floo.yessentials.commands.server.broadcast;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;

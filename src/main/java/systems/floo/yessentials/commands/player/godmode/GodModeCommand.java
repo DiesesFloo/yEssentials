@@ -1,4 +1,4 @@
-package systems.floo.yessentials.commands.fly;
+package systems.floo.yessentials.commands.player.godmode;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -8,15 +8,16 @@ import systems.floo.yessentials.messages.MessageProvider;
 
 import java.util.Arrays;
 
-public class FlyCommand extends Command {
+public class GodModeCommand extends Command {
+
     /**
      * Defines command information
      */
-    public FlyCommand() {
-        super("fly",
-                "Sets a player into fly mode.",
+    public GodModeCommand() {
+        super("godmode",
+                "Transforms a player into a god.",
                 "",
-                Arrays.asList(new String[]{"flymode"}));
+                Arrays.asList(new String[]{"god"}));
     }
 
     /**
@@ -30,9 +31,9 @@ public class FlyCommand extends Command {
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
 
-
         if (args.length >= 1) {
-            if (!sender.hasPermission("essentials.fly.others")) {
+
+            if (!sender.hasPermission("essentials.godmode.others")) {
                 sender.sendMessage(MessageProvider.getMessage("noperm"));
                 return false;
             }
@@ -46,59 +47,58 @@ public class FlyCommand extends Command {
                 return false;
             }
 
-            if (FlyCommandProvider.isFlyer(target)) {
-                FlyCommandProvider.removeFlyer(target);
-                sender.sendMessage(
-                        MessageProvider.getMessage("disabledflyothers")
-                                .replaceAll("%player%", target.getDisplayName())
-                );
+            if (GodModeCommandProvider.isGodPlayer(target)) {
+                GodModeCommandProvider.removeGodPlayer(target);
 
-                target.sendMessage(
-                        MessageProvider.getMessage("disabledflyself")
-                                .replaceAll("%player%", target.getDisplayName())
-                );
-            } else {
-
-                FlyCommandProvider.addFlyer(target);
                 sender.sendMessage(
-                        MessageProvider.getMessage("enabledflyothers")
+                        MessageProvider.getMessage("disabledgodmodeothers")
                                 .replaceAll("%player%", target.getDisplayName())
                 );
                 target.sendMessage(
-                        MessageProvider.getMessage("enabledflyself")
+                        MessageProvider.getMessage("disabledgodmodeself")
                                 .replaceAll("%player%", target.getDisplayName())
                 );
+
+                return true;
             }
+
+            GodModeCommandProvider.addGodPlayer(target);
+            sender.sendMessage(
+                    MessageProvider.getMessage("enabledgodmodeothers")
+                            .replaceAll("%player%", target.getDisplayName())
+            );
+            target.sendMessage(
+                    MessageProvider.getMessage("enabledgodmodeself")
+                            .replaceAll("%player%", target.getDisplayName())
+            );
 
             return true;
 
         }
-
         if (!(sender instanceof Player)) {
             return false;
         }
 
         Player player = (Player) sender;
 
-        if (!player.hasPermission("essentials.fly.self")) {
+        if (!player.hasPermission("essentials.godmode.self")) {
             player.sendMessage(MessageProvider.getMessage("noperm"));
             return false;
         }
 
-        if (FlyCommandProvider.isFlyer(player)) {
-            FlyCommandProvider.removeFlyer(player);
+        if (GodModeCommandProvider.isGodPlayer(player)) {
+            GodModeCommandProvider.removeGodPlayer(player);
             player.sendMessage(
-                    MessageProvider.getMessage("disabledflyself")
+                    MessageProvider.getMessage("disabledgodmodeself")
                             .replaceAll("%player%", player.getDisplayName())
             );
         } else {
-            FlyCommandProvider.addFlyer(player);
+            GodModeCommandProvider.addGodPlayer(player);
             player.sendMessage(
-                    MessageProvider.getMessage("enabledflyself")
+                    MessageProvider.getMessage("enabledgodmodeself")
                             .replaceAll("%player%", player.getDisplayName())
             );
         }
-
 
         return true;
     }

@@ -1,4 +1,4 @@
-package systems.floo.yessentials.commands.vanish;
+package systems.floo.yessentials.commands.player.vanish;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;

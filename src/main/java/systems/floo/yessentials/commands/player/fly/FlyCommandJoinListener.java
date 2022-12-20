@@ -1,4 +1,4 @@
-package systems.floo.yessentials.commands.fly;
+package systems.floo.yessentials.commands.player.fly;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

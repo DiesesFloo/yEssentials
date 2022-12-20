@@ -1,4 +1,4 @@
-package systems.floo.yessentials.commands.repair;
+package systems.floo.yessentials.commands.player.repair;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
