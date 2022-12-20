@@ -14,14 +14,14 @@ public class MessageProvider {
      * @return The prefix
      */
     public static String getMainPrefix() {
-        return getPrefix("main");
+        return getPrefix(PrefixType.MAIN);
     }
 
     /**
      * Returns the prefix defined with the key
      * in params from the config
      *
-     * @param key They key of the prefix
+     * @param key The key of the prefix
      * @return The prefix with the given key
      */
     public static String getPrefix(String key){
@@ -30,16 +30,41 @@ public class MessageProvider {
     }
 
     /**
+     * Returns the prefix defined with
+     * the key of the prefix type
+     * @param prefixType The type of the prefix
+     * @return The prefix of the given type
+     */
+    public static String getPrefix(PrefixType prefixType){
+        return getPrefix(prefixType.getKey());
+    }
+
+    /**
      * Returns the message defined with the key
      * in params from the config
      *
      * @param key The key of the message
-     * @return The message with the given key
+     * @return The message with the given key and main prefix
      */
     public static String getMessage(String key) {
         return getMainPrefix()
                 + ChatColor.translateAlternateColorCodes('&',
                 CONFIG.getString("strings.messages." + key));
+    }
+
+    /**
+     * Returns the message defined with the key
+     * in params from the config and with the
+     * given prefix type
+     *
+     * @param prefixType The type of the prefix
+     * @param key The key of the message
+     * @return The message with the given key and given prefix
+     */
+    public static String getMessage(PrefixType prefixType, String key){
+        return getPrefix(prefixType.getKey())
+                + ChatColor.translateAlternateColorCodes('&',
+                CONFIG.getString("string.messages." + key));
     }
 
 }
