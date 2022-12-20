@@ -23,3 +23,7 @@ strings:
     feedothers: "&6%player% &7was fed."
     broadcastsent: "&7Broadcast message was sent."
     broadcasterror: "&7Please provide your broadcast message after the command."
+    vanishself: "&7You're now &ainvisible&7."
+    vanishothers: "&6%player% is now &ainvisible."
+    unvanishself: "&7You're no longer &cinvisible&7."
+    unvanishothers: "&6%player% is no longer &cinvisible."
