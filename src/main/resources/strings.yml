@@ -21,3 +21,5 @@ strings:
     repairallothers: "&7All items in the inventory of &6%player% &7were repaired."
     feedself: "&7You were fed."
     feedothers: "&6%player% &7was fed."
+    broadcastsent: "&7Broadcast message was sent."
+    broadcasterror: "&7Please provide your broadcast message after the command."
