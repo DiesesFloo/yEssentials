@@ -9,13 +9,24 @@ public class MessageProvider {
     private static final YamlConfiguration CONFIG = ConfigProvider.getCustomConfig("strings.yml");
 
     /**
-     * Returns the default prefix defined in config
+     * Returns the main prefix defined in config
      *
      * @return The prefix
      */
-    public static String getPrefix() {
+    public static String getMainPrefix() {
+        return getPrefix("main");
+    }
+
+    /**
+     * Returns the prefix defined with the key
+     * in params from the config
+     *
+     * @param key They key of the prefix
+     * @return The prefix with the given key
+     */
+    public static String getPrefix(String key){
         return ChatColor.translateAlternateColorCodes('&',
-                CONFIG.getString("strings.prefix"));
+                CONFIG.getString("strings.prefixes." + key));
     }
 
     /**
@@ -23,10 +34,10 @@ public class MessageProvider {
      * in params from the config
      *
      * @param key The key of the message
-     * @return The message with the defined key
+     * @return The message with the given key
      */
     public static String getMessage(String key) {
-        return getPrefix()
+        return getMainPrefix()
                 + ChatColor.translateAlternateColorCodes('&',
                 CONFIG.getString("strings.messages." + key));
     }

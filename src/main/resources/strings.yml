@@ -1,5 +1,7 @@
 strings:
-  prefix: "&8[&cEssentials&8] &7"
+  prefixes:
+    main: "&c&lEssentials &8× &7"
+    broadcast: "&6&lBroadcast &8× &7"
   messages:
     noperm: "&7You don't have the permission to do this."
     playernotfound: "&7This player wasn't found."
