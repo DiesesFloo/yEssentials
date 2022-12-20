@@ -69,6 +69,7 @@ public class EconomyProvider {
      * @return If the player is registered
      */
     public static boolean isRegistered(UUID uuid) {
+        if (uuid == null) return false;
         return CONFIG.contains(uuid.toString());
     }
 
