@@ -20,7 +20,7 @@ public class VanishCommandJoinListener implements Listener {
      * @param event Join event
      */
     @EventHandler
-    public void onJoin(PlayerJoinEvent event){
+    public void handleJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
 
         if(VanishCommandProvider.isVanished(player)){
