@@ -3,7 +3,6 @@ package systems.floo.yessentials.messages;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 import systems.floo.yessentials.config.ConfigProvider;
 import systems.floo.yessentials.economy.EconomyProvider;
 
@@ -61,7 +60,7 @@ public class MessageProvider {
      * in params from the config and replaces given
      * placeholders
      *
-     * @param key The key of the message
+     * @param key   The key of the message
      * @param name1 The name of the command executor
      * @param name2 The name of the command target
      * @return The message with the given key and main prefix
@@ -77,7 +76,7 @@ public class MessageProvider {
      * in params from the config and replaces given
      * placeholders
      *
-     * @param key The key of the message
+     * @param key     The key of the message
      * @param player1 The command executor
      * @param player2 The command target
      * @return The message with the given key and main prefix
@@ -91,7 +90,7 @@ public class MessageProvider {
      * in params from the config and replaces given
      * placeholders
      *
-     * @param key The key of the message
+     * @param key  The key of the message
      * @param name The name of the command executor
      * @return The message with the given key and main prefix
      */
@@ -104,7 +103,7 @@ public class MessageProvider {
      * in params from the config and replaces given
      * placeholders
      *
-     * @param key The key of the message
+     * @param key    The key of the message
      * @param player The command executor
      * @return The message with the given key and main prefix
      */
@@ -117,8 +116,8 @@ public class MessageProvider {
      * in params from the config and replaces given
      * placeholders
      *
-     * @param key The key of the message
-     * @param name The name of the command executor
+     * @param key    The key of the message
+     * @param name   The name of the command executor
      * @param amount The amount of money
      * @return The message with the given key and main prefix
      */
@@ -132,7 +131,7 @@ public class MessageProvider {
      * in params from the config and replaces given
      * placeholders
      *
-     * @param key The key of the message
+     * @param key    The key of the message
      * @param player The command executor
      * @param amount The amount of money
      * @return The message with the given key and main prefix
@@ -146,9 +145,9 @@ public class MessageProvider {
      * in params from the config and replaces given
      * placeholders
      *
-     * @param key The key of the message
-     * @param name1 The name of the command executor
-     * @param name2 The name of the command target
+     * @param key    The key of the message
+     * @param name1  The name of the command executor
+     * @param name2  The name of the command target
      * @param amount The amount of money
      * @return The message with the given key and main prefix
      */
@@ -162,10 +161,10 @@ public class MessageProvider {
      * in params from the config and replaces given
      * placeholders
      *
-     * @param key The key of the message
+     * @param key     The key of the message
      * @param player1 The command executor
      * @param player2 The command target
-     * @param amount The amount of money
+     * @param amount  The amount of money
      * @return The message with the given key and main prefix
      */
     public static String getMessage(String key, CommandSender player1, CommandSender player2, double amount) {
@@ -194,9 +193,9 @@ public class MessageProvider {
      * placeholders
      *
      * @param prefixType The type of the prefix
-     * @param key The key of the message
-     * @param name1 The name of the command executor
-     * @param name2 The name of the command target
+     * @param key        The key of the message
+     * @param name1      The name of the command executor
+     * @param name2      The name of the command target
      * @return The message with the given key and given prefix
      */
     public static String getMessage(PrefixType prefixType, String key, String name1, String name2) {
@@ -212,9 +211,9 @@ public class MessageProvider {
      * placeholders
      *
      * @param prefixType The type of the prefix
-     * @param key The key of the message
-     * @param player1 The command executor
-     * @param player2 The command target
+     * @param key        The key of the message
+     * @param player1    The command executor
+     * @param player2    The command target
      * @return The message with the given key and given prefix
      */
     public static String getMessage(PrefixType prefixType, String key, CommandSender player1, CommandSender player2) {
@@ -228,8 +227,8 @@ public class MessageProvider {
      * placeholders
      *
      * @param prefixType The type of the prefix
-     * @param key The key of the message
-     * @param name The name of the command executor
+     * @param key        The key of the message
+     * @param name       The name of the command executor
      * @return The message with the given key and given prefix
      */
     public static String getMessage(PrefixType prefixType, String key, String name) {
@@ -243,8 +242,8 @@ public class MessageProvider {
      * placeholders
      *
      * @param prefixType The type of the prefix
-     * @param key The key of the message
-     * @param player The command executor
+     * @param key        The key of the message
+     * @param player     The command executor
      * @return The message with the given key and given prefix
      */
     public static String getMessage(PrefixType prefixType, String key, CommandSender player) {
@@ -258,9 +257,9 @@ public class MessageProvider {
      * placeholders
      *
      * @param prefixType The type of the prefix
-     * @param key The key of the message
-     * @param name The name of the command executor
-     * @param amount The amount of money
+     * @param key        The key of the message
+     * @param name       The name of the command executor
+     * @param amount     The amount of money
      * @return The message with the given key and given prefix
      */
     public static String getMessage(PrefixType prefixType, String key, String name, double amount) {
@@ -275,9 +274,9 @@ public class MessageProvider {
      * placeholders
      *
      * @param prefixType The type of the prefix
-     * @param key The key of the message
-     * @param player The command executor
-     * @param amount The amount of money
+     * @param key        The key of the message
+     * @param player     The command executor
+     * @param amount     The amount of money
      * @return The message with the given key and given prefix
      */
     public static String getMessage(PrefixType prefixType, String key, CommandSender player, double amount) {
@@ -291,10 +290,10 @@ public class MessageProvider {
      * placeholders
      *
      * @param prefixType The type of the prefix
-     * @param key The key of the message
-     * @param name1 The name of the command executor
-     * @param name2 The name of the command target
-     * @param amount The amount of money
+     * @param key        The key of the message
+     * @param name1      The name of the command executor
+     * @param name2      The name of the command target
+     * @param amount     The amount of money
      * @return The message with the given key and given prefix
      */
     public static String getMessage(PrefixType prefixType, String key, String name1, String name2, double amount) {
@@ -309,10 +308,10 @@ public class MessageProvider {
      * placeholders
      *
      * @param prefixType The type of the prefix
-     * @param key The key of the message
-     * @param player1 The command executor
-     * @param player2 The command target
-     * @param amount The amount of money
+     * @param key        The key of the message
+     * @param player1    The command executor
+     * @param player2    The command target
+     * @param amount     The amount of money
      * @return The message with the given key and given prefix
      */
     public static String getMessage(PrefixType prefixType, String key, CommandSender player1, CommandSender player2, double amount) {
