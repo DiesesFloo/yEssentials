@@ -1,6 +1,7 @@
 package systems.floo.yessentials.messages;
 
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import systems.floo.yessentials.config.ConfigProvider;
@@ -81,7 +82,7 @@ public class MessageProvider {
      * @param player2 The command target
      * @return The message with the given key and main prefix
      */
-    public static String getMessage(String key, Player player1, Player player2) {
+    public static String getMessage(String key, CommandSender player1, CommandSender player2) {
         return getMessage(key, player1.getName(), player2.getName());
     }
 
@@ -107,7 +108,7 @@ public class MessageProvider {
      * @param player The command executor
      * @return The message with the given key and main prefix
      */
-    public static String getMessage(String key, Player player) {
+    public static String getMessage(String key, CommandSender player) {
         return getMessage(key, player.getName());
     }
 
@@ -136,7 +137,7 @@ public class MessageProvider {
      * @param amount The amount of money
      * @return The message with the given key and main prefix
      */
-    public static String getMessage(String key, Player player, double amount) {
+    public static String getMessage(String key, CommandSender player, double amount) {
         return getMessage(key, player.getName(), amount);
     }
 
@@ -167,7 +168,7 @@ public class MessageProvider {
      * @param amount The amount of money
      * @return The message with the given key and main prefix
      */
-    public static String getMessage(String key, Player player1, Player player2, double amount) {
+    public static String getMessage(String key, CommandSender player1, CommandSender player2, double amount) {
         return getMessage(key, player1.getName(), player2.getName(), amount);
     }
 
@@ -216,7 +217,7 @@ public class MessageProvider {
      * @param player2 The command target
      * @return The message with the given key and given prefix
      */
-    public static String getMessage(PrefixType prefixType, String key, Player player1, Player player2) {
+    public static String getMessage(PrefixType prefixType, String key, CommandSender player1, CommandSender player2) {
         return getMessage(prefixType, key, player1.getName(), player2.getName());
     }
 
@@ -246,7 +247,7 @@ public class MessageProvider {
      * @param player The command executor
      * @return The message with the given key and given prefix
      */
-    public static String getMessage(PrefixType prefixType, String key, Player player) {
+    public static String getMessage(PrefixType prefixType, String key, CommandSender player) {
         return getMessage(prefixType, key, player.getName());
     }
 
@@ -279,7 +280,7 @@ public class MessageProvider {
      * @param amount The amount of money
      * @return The message with the given key and given prefix
      */
-    public static String getMessage(PrefixType prefixType, String key, Player player, double amount) {
+    public static String getMessage(PrefixType prefixType, String key, CommandSender player, double amount) {
         return getMessage(prefixType, key, player.getName(), amount);
     }
 
@@ -314,7 +315,7 @@ public class MessageProvider {
      * @param amount The amount of money
      * @return The message with the given key and given prefix
      */
-    public static String getMessage(PrefixType prefixType, String key, Player player1, Player player2, double amount) {
+    public static String getMessage(PrefixType prefixType, String key, CommandSender player1, CommandSender player2, double amount) {
         return getMessage(prefixType, key, player1.getName(), player2.getName(), amount);
 
     }
