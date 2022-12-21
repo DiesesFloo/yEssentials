@@ -33,27 +33,20 @@ public class RepairAllCommand extends Command {
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
         if (args.length >= 1) {
             if (!sender.hasPermission("essentials.repairall.others")) {
-                sender.sendMessage(MessageProvider.getMessage("noperm"));
+                sender.sendMessage(MessageProvider.getMessage("noperm", sender));
                 return false;
             }
 
             Player target = Bukkit.getPlayer(args[0]);
 
             if (target == null) {
-                sender.sendMessage(MessageProvider.getMessage("playernotfound"));
+                sender.sendMessage(MessageProvider.getMessage("playernotfound", sender));
                 return false;
             }
 
             RepairCommandProvider.repairInventory(target);
-            sender.sendMessage(
-                    MessageProvider.getMessage("repairallothers")
-                            .replaceAll("%player%", target.getDisplayName())
-            );
-
-            target.sendMessage(
-                    MessageProvider.getMessage("repairallself")
-                            .replaceAll("%player%", target.getDisplayName())
-            );
+            sender.sendMessage(MessageProvider.getMessage("repairallothers", sender, target));
+            target.sendMessage(MessageProvider.getMessage("repairallotherstarget", sender, target));
 
             return true;
         }
@@ -61,13 +54,12 @@ public class RepairAllCommand extends Command {
         Player player = (Player) sender;
 
         if (!player.hasPermission("essentials.repairall.self")) {
-            player.sendMessage(MessageProvider.getMessage("noperm"));
+            player.sendMessage(MessageProvider.getMessage("noperm", player));
             return false;
         }
 
         RepairCommandProvider.repairInventory(player);
-        player.sendMessage(MessageProvider.getMessage("repairallself")
-                .replaceAll("%player%", player.getDisplayName()));
+        player.sendMessage(MessageProvider.getMessage("repairallself", player));
 
         return true;
     }

@@ -34,7 +34,7 @@ public class GodModeCommand extends Command {
         if (args.length >= 1) {
 
             if (!sender.hasPermission("essentials.godmode.others")) {
-                sender.sendMessage(MessageProvider.getMessage("noperm"));
+                sender.sendMessage(MessageProvider.getMessage("noperm", sender));
                 return false;
             }
 
@@ -43,34 +43,23 @@ public class GodModeCommand extends Command {
             Player target = Bukkit.getPlayer(targetName);
 
             if (target == null) {
-                sender.sendMessage(MessageProvider.getMessage("playernotfound"));
+                sender.sendMessage(MessageProvider.getMessage("playernotfound", sender));
                 return false;
             }
 
             if (GodModeCommandProvider.isGodPlayer(target)) {
                 GodModeCommandProvider.removeGodPlayer(target);
 
-                sender.sendMessage(
-                        MessageProvider.getMessage("disabledgodmodeothers")
-                                .replaceAll("%player%", target.getDisplayName())
-                );
-                target.sendMessage(
-                        MessageProvider.getMessage("disabledgodmodeself")
-                                .replaceAll("%player%", target.getDisplayName())
-                );
+                sender.sendMessage(MessageProvider.getMessage("disabledgodmodeothers", sender, target));
+                target.sendMessage(MessageProvider.getMessage("disabledgodmodeotherstarget", sender, target));
 
                 return true;
             }
 
             GodModeCommandProvider.addGodPlayer(target);
-            sender.sendMessage(
-                    MessageProvider.getMessage("enabledgodmodeothers")
-                            .replaceAll("%player%", target.getDisplayName())
-            );
-            target.sendMessage(
-                    MessageProvider.getMessage("enabledgodmodeself")
-                            .replaceAll("%player%", target.getDisplayName())
-            );
+
+            sender.sendMessage(MessageProvider.getMessage("enabledgodmodeothers", sender, target));
+            target.sendMessage(MessageProvider.getMessage("enabledgodmodeotherstarget", sender, target));
 
             return true;
 
@@ -82,22 +71,16 @@ public class GodModeCommand extends Command {
         Player player = (Player) sender;
 
         if (!player.hasPermission("essentials.godmode.self")) {
-            player.sendMessage(MessageProvider.getMessage("noperm"));
+            player.sendMessage(MessageProvider.getMessage("noperm", player));
             return false;
         }
 
         if (GodModeCommandProvider.isGodPlayer(player)) {
             GodModeCommandProvider.removeGodPlayer(player);
-            player.sendMessage(
-                    MessageProvider.getMessage("disabledgodmodeself")
-                            .replaceAll("%player%", player.getDisplayName())
-            );
+            player.sendMessage(MessageProvider.getMessage("disabledgodmodeself", player));
         } else {
             GodModeCommandProvider.addGodPlayer(player);
-            player.sendMessage(
-                    MessageProvider.getMessage("enabledgodmodeself")
-                            .replaceAll("%player%", player.getDisplayName())
-            );
+            player.sendMessage(MessageProvider.getMessage("enabledgodmodeself", player));
         }
 
         return true;

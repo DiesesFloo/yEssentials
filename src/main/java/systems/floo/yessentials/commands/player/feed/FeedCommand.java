@@ -32,28 +32,21 @@ public class FeedCommand extends Command {
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
         if (args.length >= 1){
             if (!sender.hasPermission("essentials.feed.others")){
-                sender.sendMessage(MessageProvider.getMessage("noperm"));
+                sender.sendMessage(MessageProvider.getMessage("noperm", sender));
                 return false;
             }
 
             Player target = Bukkit.getPlayer(args[0]);
 
             if (target == null){
-                sender.sendMessage(MessageProvider.getMessage("playernotfound"));
+                sender.sendMessage(MessageProvider.getMessage("playernotfound", sender));
                 return false;
             }
 
             target.setFoodLevel(20);
 
-            sender.sendMessage(
-                    MessageProvider.getMessage("feedothers")
-                            .replaceAll("%player%", target.getDisplayName())
-            );
-
-            target.sendMessage(
-                    MessageProvider.getMessage("feedself")
-                            .replaceAll("%player%", target.getDisplayName())
-            );
+            sender.sendMessage(MessageProvider.getMessage("feedothers", sender, target));
+            target.sendMessage(MessageProvider.getMessage("feedotherstarget", sender, target));
 
             return true;
         }
@@ -65,16 +58,14 @@ public class FeedCommand extends Command {
         Player player = (Player) sender;
 
         if (!player.hasPermission("essentials.feed.self")){
-            player.sendMessage(MessageProvider.getMessage("noperm"));
+            player.sendMessage(MessageProvider.getMessage("noperm", player));
             return false;
         }
 
         player.setFoodLevel(20);
 
         player.sendMessage(
-                MessageProvider.getMessage("feedself")
-                        .replaceAll("%player%", player.getDisplayName())
-        );
+                MessageProvider.getMessage("feedself", player));
 
         return true;
     }

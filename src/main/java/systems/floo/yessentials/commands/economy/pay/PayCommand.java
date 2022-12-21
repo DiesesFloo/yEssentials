@@ -43,17 +43,17 @@ public class PayCommand extends Command {
         UUID uuid = player.getUniqueId();
 
         if (!EconomyProvider.isRegistered(uuid)){
-            player.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "economynotregisteredself"));
+            player.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "economynotregisteredself", player));
             return false;
         }
 
         if (args.length < 2){
-            player.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "wronguse"));
+            player.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "wronguse", player));
             return false;
         }
 
         if (!player.hasPermission("essentials.pay")){
-            player.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "noperm"));
+            player.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "noperm", player));
             return false;
         }
 
@@ -61,31 +61,28 @@ public class PayCommand extends Command {
         OfflinePlayer targetOfflinePlayer = Bukkit.getOfflinePlayer(targetUUID);
 
         if (!EconomyProvider.isRegistered(targetUUID)){
-            player.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "economynotregisteredothers")
-                    .replaceAll("%player%", targetOfflinePlayer.getName()));
+            player.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "economynotregisteredothers", player));
             return false;
         }
 
         String amountString = args[1];
 
         if(!NumberUtils.isNumber(amountString)){
-            player.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "economynonumber"));
+            player.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "economynonumber", player));
             return false;
         }
 
         double amount = Double.parseDouble(amountString);
 
         if (!EconomyProvider.has(uuid, amount)){
-            player.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "economynotenoughmoney"));
+            player.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "economynotenoughmoney", player, amount));
             return false;
         }
 
         EconomyProvider.removeCoins(uuid, amount);
         EconomyProvider.addCoins(targetUUID, amount);
 
-        player.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "paysent")
-                .replaceAll("%player1%", player.getDisplayName())
-                .replaceAll("%player2%", targetOfflinePlayer.getName()));
+        player.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "paysent", player.getName(), targetOfflinePlayer.getName(), amount));
 
         if (!targetOfflinePlayer.isOnline()){
             return true;
@@ -93,10 +90,7 @@ public class PayCommand extends Command {
 
         Player targetPlayer = targetOfflinePlayer.getPlayer();
 
-        targetPlayer.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "payreceived")
-                .replaceAll("%player1%", player.getDisplayName())
-                .replaceAll("%player2%", targetOfflinePlayer.getName())
-                .replaceAll("%amount%", amountString + "$"));
+        targetPlayer.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "payreceived", player.getName(), targetOfflinePlayer.getName(), amount));
 
         return true;
     }

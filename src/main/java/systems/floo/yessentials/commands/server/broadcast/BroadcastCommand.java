@@ -30,12 +30,12 @@ public class BroadcastCommand extends Command {
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
         if (!sender.hasPermission("essentials.broadcast")){
-            sender.sendMessage(MessageProvider.getMessage("noperm"));
+            sender.sendMessage(MessageProvider.getMessage("noperm", sender));
             return false;
         }
 
         if (args.length < 1){
-            sender.sendMessage(MessageProvider.getMessage("broadcasterror"));
+            sender.sendMessage(MessageProvider.getMessage("broadcasterror", sender));
             return false;
         }
 
@@ -46,7 +46,7 @@ public class BroadcastCommand extends Command {
         }
 
         Bukkit.broadcastMessage(MessageProvider.getPrefix("broadcast") + broadcastMessage);
-        sender.sendMessage(MessageProvider.getMessage("broadcastsent"));
+        sender.sendMessage(MessageProvider.getMessage("broadcastsent", sender));
 
         return true;
     }

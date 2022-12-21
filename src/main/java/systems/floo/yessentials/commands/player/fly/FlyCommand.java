@@ -33,7 +33,7 @@ public class FlyCommand extends Command {
 
         if (args.length >= 1) {
             if (!sender.hasPermission("essentials.fly.others")) {
-                sender.sendMessage(MessageProvider.getMessage("noperm"));
+                sender.sendMessage(MessageProvider.getMessage("noperm", sender));
                 return false;
             }
 
@@ -42,32 +42,18 @@ public class FlyCommand extends Command {
             Player target = Bukkit.getPlayer(targetName);
 
             if (target == null) {
-                sender.sendMessage(MessageProvider.getMessage("playernotfound"));
+                sender.sendMessage(MessageProvider.getMessage("playernotfound", sender));
                 return false;
             }
 
             if (FlyCommandProvider.isFlyer(target)) {
                 FlyCommandProvider.removeFlyer(target);
-                sender.sendMessage(
-                        MessageProvider.getMessage("disabledflyothers")
-                                .replaceAll("%player%", target.getDisplayName())
-                );
-
-                target.sendMessage(
-                        MessageProvider.getMessage("disabledflyself")
-                                .replaceAll("%player%", target.getDisplayName())
-                );
+                sender.sendMessage(MessageProvider.getMessage("disabledflyothers", sender, target));
+                target.sendMessage(MessageProvider.getMessage("disabledflyotherstarget", sender, target));
             } else {
-
                 FlyCommandProvider.addFlyer(target);
-                sender.sendMessage(
-                        MessageProvider.getMessage("enabledflyothers")
-                                .replaceAll("%player%", target.getDisplayName())
-                );
-                target.sendMessage(
-                        MessageProvider.getMessage("enabledflyself")
-                                .replaceAll("%player%", target.getDisplayName())
-                );
+                sender.sendMessage(MessageProvider.getMessage("enabledflyothers"));
+                target.sendMessage(MessageProvider.getMessage("enabledflyotherstarget"));
             }
 
             return true;
@@ -81,22 +67,16 @@ public class FlyCommand extends Command {
         Player player = (Player) sender;
 
         if (!player.hasPermission("essentials.fly.self")) {
-            player.sendMessage(MessageProvider.getMessage("noperm"));
+            player.sendMessage(MessageProvider.getMessage("noperm", player));
             return false;
         }
 
         if (FlyCommandProvider.isFlyer(player)) {
             FlyCommandProvider.removeFlyer(player);
-            player.sendMessage(
-                    MessageProvider.getMessage("disabledflyself")
-                            .replaceAll("%player%", player.getDisplayName())
-            );
+            player.sendMessage(MessageProvider.getMessage("disabledflyself", player));
         } else {
             FlyCommandProvider.addFlyer(player);
-            player.sendMessage(
-                    MessageProvider.getMessage("enabledflyself")
-                            .replaceAll("%player%", player.getDisplayName())
-            );
+            player.sendMessage(MessageProvider.getMessage("enabledflyself", player));
         }
 
 
