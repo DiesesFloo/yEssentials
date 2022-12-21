@@ -75,6 +75,10 @@ public class EconomyProvider {
         return CONFIG.contains("data." + uuid.toString());
     }
 
+    public static String getCurrencySign(){
+        return CONFIG.getString("currency_sign");
+    }
+
     /**
      * Resets all coins of a player
      *
