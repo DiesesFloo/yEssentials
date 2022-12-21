@@ -17,6 +17,8 @@ import systems.floo.yessentials.commands.player.godmode.GodModeCommandFoodListen
 import systems.floo.yessentials.commands.player.heal.HealCommand;
 import systems.floo.yessentials.commands.player.repair.RepairAllCommand;
 import systems.floo.yessentials.commands.player.repair.RepairCommand;
+import systems.floo.yessentials.config.ConfigStartupListener;
+import systems.floo.yessentials.economy.EconomyJoinListener;
 import systems.floo.yessentials.instances.interfaces.IStartupHandler;
 
 import java.util.ArrayList;
@@ -32,21 +34,17 @@ public class InstanceProvider {
     public static void registerAllInstances() {
         register(new FlyCommand());
         register(new FlyCommandJoinListener());
-
         register(new GodModeCommand());
         register(new GodModeCommandDamageListener());
         register(new GodModeCommandFoodListener());
-
         register(new HealCommand());
-
         register(new RepairAllCommand());
         register(new RepairCommand());
-
         register(new FeedCommand());
-
         register(new BroadcastCommand());
-
         register(new PayCommand());
+        register(new EconomyJoinListener());
+        register(new ConfigStartupListener());
     }
 
     /**

@@ -1,5 +1,6 @@
 package systems.floo.yessentials.economy;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import systems.floo.yessentials.config.ConfigProvider;
 
@@ -16,7 +17,8 @@ public class EconomyProvider {
      * @param amount The amount to set
      */
     public static void setCoins(UUID uuid, double amount) {
-        CONFIG.set(uuid.toString(), amount);
+        CONFIG.set("data." + uuid.toString(), amount);
+        ConfigProvider.saveConfig(CONFIG, "economy.yml");
     }
 
     /**
@@ -27,7 +29,7 @@ public class EconomyProvider {
      */
     public static double getCoins(UUID uuid) {
         if (!isRegistered(uuid)) return 0;
-        return CONFIG.getDouble(uuid.toString());
+        return CONFIG.getDouble("data." + uuid.toString());
     }
 
     /**
@@ -70,7 +72,7 @@ public class EconomyProvider {
      */
     public static boolean isRegistered(UUID uuid) {
         if (uuid == null) return false;
-        return CONFIG.contains(uuid.toString());
+        return CONFIG.contains("data." + uuid.toString());
     }
 
     /**
@@ -90,7 +92,8 @@ public class EconomyProvider {
      */
     public static void register(UUID uuid) {
         if (isRegistered(uuid)) return;
-        CONFIG.set(uuid.toString(), 0);
+        CONFIG.set("data." + uuid.toString(), 0);
+        ConfigProvider.saveConfig(CONFIG, "economy.yml");
     }
 
 }

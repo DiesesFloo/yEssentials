@@ -65,7 +65,7 @@ public class MessageProvider {
     public static String getMessage(PrefixType prefixType, String key) {
         return getPrefix(prefixType.getKey())
                 + ChatColor.translateAlternateColorCodes('&',
-                CONFIG.getString("string.messages." + key));
+                CONFIG.getString("strings.messages." + key));
     }
 
 }

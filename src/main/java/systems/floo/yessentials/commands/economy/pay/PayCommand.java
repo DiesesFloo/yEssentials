@@ -95,7 +95,8 @@ public class PayCommand extends Command {
 
         targetPlayer.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "payreceived")
                 .replaceAll("%player1%", player.getDisplayName())
-                .replaceAll("%player2%", targetOfflinePlayer.getName()));
+                .replaceAll("%player2%", targetOfflinePlayer.getName())
+                .replaceAll("%amount%", amountString + "$"));
 
         return true;
     }

@@ -36,4 +36,14 @@ public class ConfigProvider {
         return config;
     }
 
+    public static void saveConfig(YamlConfiguration config, String path){
+        File configFile = new File(PLUGIN.getDataFolder(), path);
+
+        try {
+            config.save(configFile);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
