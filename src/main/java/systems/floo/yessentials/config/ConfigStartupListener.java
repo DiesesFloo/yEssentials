@@ -13,8 +13,8 @@ public class ConfigStartupListener implements IStartupHandler {
      */
     @Override
     public void handleStart() {
-        PLUGIN.saveResource("strings.yml", false);
-        PLUGIN.saveResource("economy.yml", false);
+        ConfigProvider.getCustomConfig("strings.yml");
+        ConfigProvider.getCustomConfig("economy.yml");
     }
 
 }
