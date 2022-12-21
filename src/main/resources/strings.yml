@@ -27,7 +27,7 @@ strings:
     repairotherstarget: "&7The items in your main hand were repaired by &6%player1%&7."
     repairallself: "&7All items in your inventory were repaired."
     repairallothers: "&7All items in the inventory of &6%player2% &7were repaired."
-    repairallotherstarget: "&7All items in your inventory were repaired by&6%player1&7."
+    repairallotherstarget: "&7All items in your inventory were repaired by &6%player1%&7."
     feedself: "&7You were fed."
     feedothers: "&6%player2% &7was fed."
     feedotherstarget: "&7You were fed by &6%player1%&7."
