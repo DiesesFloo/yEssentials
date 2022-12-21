@@ -1,5 +1,6 @@
 package systems.floo.yessentials.messages;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -67,8 +68,8 @@ public class MessageProvider {
      */
     public static String getMessage(String key, String name1, String name2) {
         return getMessage(key)
-                .replaceAll("%player1%", name1)
-                .replaceAll("%player2%", name2);
+                .replace("%player1%", name1)
+                .replace("%player2%", name2);
     }
 
     /**
@@ -95,7 +96,7 @@ public class MessageProvider {
      * @return The message with the given key and main prefix
      */
     public static String getMessage(String key, String name) {
-        return getMessage(key).replaceAll("%player%", name);
+        return getMessage(key).replace("%player%", name);
     }
 
     /**
@@ -123,7 +124,7 @@ public class MessageProvider {
      */
     public static String getMessage(String key, String name, double amount) {
         return getMessage(key, name)
-                .replaceAll("%amount%", amount + EconomyProvider.getCurrencySign());
+                .replace("%amount%", amount + EconomyProvider.getCurrencySign());
     }
 
     /**
@@ -153,7 +154,7 @@ public class MessageProvider {
      */
     public static String getMessage(String key, String name1, String name2, double amount) {
         return getMessage(key, name1, name2)
-                .replaceAll("%amount%", amount + EconomyProvider.getCurrencySign());
+                .replace("%amount%", amount + EconomyProvider.getCurrencySign());
     }
 
     /**
@@ -200,8 +201,8 @@ public class MessageProvider {
      */
     public static String getMessage(PrefixType prefixType, String key, String name1, String name2) {
         return getMessage(prefixType, key)
-                .replaceAll("%player1%", name1)
-                .replaceAll("%player2%", name2);
+                .replace("%player1%", name1)
+                .replace("%player2%", name2);
     }
 
     /**
@@ -232,7 +233,7 @@ public class MessageProvider {
      * @return The message with the given key and given prefix
      */
     public static String getMessage(PrefixType prefixType, String key, String name) {
-        return getMessage(prefixType, key).replaceAll("%player%", name);
+        return getMessage(prefixType, key).replace("%player%", name);
     }
 
     /**
@@ -264,7 +265,7 @@ public class MessageProvider {
      */
     public static String getMessage(PrefixType prefixType, String key, String name, double amount) {
         return getMessage(prefixType, key, name)
-                .replaceAll("%amount%", amount + EconomyProvider.getCurrencySign());
+                .replace("%amount%", amount + EconomyProvider.getCurrencySign());
     }
 
     /**
@@ -297,8 +298,9 @@ public class MessageProvider {
      * @return The message with the given key and given prefix
      */
     public static String getMessage(PrefixType prefixType, String key, String name1, String name2, double amount) {
+        Bukkit.getLogger().info(amount + EconomyProvider.getCurrencySign());
         return getMessage(prefixType, key, name1, name2)
-                .replaceAll("%amount%", amount + EconomyProvider.getCurrencySign());
+                .replace("%amount%", String.valueOf(amount + EconomyProvider.getCurrencySign()));
     }
 
     /**
