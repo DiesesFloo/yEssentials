@@ -52,8 +52,8 @@ public class FlyCommand extends Command {
                 target.sendMessage(MessageProvider.getMessage("disabledflyotherstarget", sender, target));
             } else {
                 FlyCommandProvider.addFlyer(target);
-                sender.sendMessage(MessageProvider.getMessage("enabledflyothers"));
-                target.sendMessage(MessageProvider.getMessage("enabledflyotherstarget"));
+                sender.sendMessage(MessageProvider.getMessage("enabledflyothers", sender, target));
+                target.sendMessage(MessageProvider.getMessage("enabledflyotherstarget", sender, target));
             }
 
             return true;
