@@ -1,4 +1,4 @@
-package systems.floo.yessentials.commands.heal;
+package systems.floo.yessentials.commands.player.heal;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -32,7 +32,7 @@ public class HealCommand extends Command {
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
         if (args.length >= 1) {
             if (!sender.hasPermission("essentials.heal.others")) {
-                sender.sendMessage(MessageProvider.getMessage("noperm"));
+                sender.sendMessage(MessageProvider.getMessage("noperm", sender));
                 return false;
             }
 
@@ -41,17 +41,14 @@ public class HealCommand extends Command {
             Player target = Bukkit.getPlayer(targetName);
 
             if (target == null) {
-                sender.sendMessage(MessageProvider.getMessage("playernotfound"));
+                sender.sendMessage(MessageProvider.getMessage("playernotfound", sender));
                 return false;
             }
 
             target.setHealth(20);
 
-            sender.sendMessage(MessageProvider.getMessage("healothers")
-                    .replaceAll("%player%", target.getDisplayName()));
-
-            target.sendMessage(MessageProvider.getMessage("healself")
-                    .replaceAll("%player%", target.getDisplayName()));
+            sender.sendMessage(MessageProvider.getMessage("healothers", sender, target));
+            target.sendMessage(MessageProvider.getMessage("healotherstarget", sender, target));
 
             return true;
         }
@@ -62,13 +59,12 @@ public class HealCommand extends Command {
         Player player = (Player) sender;
 
         if (!player.hasPermission("essentials.heal.self")) {
-            player.sendMessage(MessageProvider.getMessage("noperm"));
+            player.sendMessage(MessageProvider.getMessage("noperm", player));
             return false;
         }
 
         player.setHealth(20);
-        player.sendMessage(MessageProvider.getMessage("healself")
-                .replaceAll("%player%", player.getDisplayName()));
+        player.sendMessage(MessageProvider.getMessage("healself", player));
 
         return true;
     }

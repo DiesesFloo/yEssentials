@@ -1,4 +1,4 @@
-package systems.floo.yessentials.commands.repair;
+package systems.floo.yessentials.commands.player.repair;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -35,27 +35,20 @@ public class RepairCommand extends Command {
             if (args[0].equalsIgnoreCase("all")) {
                 if (args.length >= 2) {
                     if (!sender.hasPermission("essentials.repairall.others")) {
-                        sender.sendMessage(MessageProvider.getMessage("noperm"));
+                        sender.sendMessage(MessageProvider.getMessage("noperm", sender));
                         return false;
                     }
 
                     Player target = Bukkit.getPlayer(args[1]);
 
                     if (target == null) {
-                        sender.sendMessage(MessageProvider.getMessage("playernotfound"));
+                        sender.sendMessage(MessageProvider.getMessage("playernotfound", sender));
                         return false;
                     }
 
                     RepairCommandProvider.repairInventory(target);
-                    sender.sendMessage(
-                            MessageProvider.getMessage("repairallothers")
-                                    .replaceAll("%player%", target.getDisplayName())
-                    );
-
-                    target.sendMessage(
-                            MessageProvider.getMessage("repairallself")
-                                    .replaceAll("%player%", target.getDisplayName())
-                    );
+                    sender.sendMessage(MessageProvider.getMessage("repairallothers", sender, target));
+                    target.sendMessage(MessageProvider.getMessage("repairallotherstarget", sender, target));
 
                     return true;
                 }
@@ -67,41 +60,33 @@ public class RepairCommand extends Command {
                 Player player = (Player) sender;
 
                 if (!player.hasPermission("essentials.repairall.self")) {
-                    player.sendMessage(MessageProvider.getMessage("noperm"));
+                    player.sendMessage(MessageProvider.getMessage("noperm", player));
                     return false;
                 }
 
                 RepairCommandProvider.repairInventory(player);
-                player.sendMessage(MessageProvider.getMessage("repairallself")
-                        .replaceAll("%player%", player.getDisplayName()));
+                player.sendMessage(MessageProvider.getMessage("repairallself", player));
 
                 return true;
 
             }
 
             if (!sender.hasPermission("essentials.repair.others")) {
-                sender.sendMessage(MessageProvider.getMessage("noperm"));
+                sender.sendMessage(MessageProvider.getMessage("noperm", sender));
                 return false;
             }
 
             Player target = Bukkit.getPlayer(args[0]);
 
             if (target == null) {
-                sender.sendMessage(MessageProvider.getMessage("playernotfound"));
+                sender.sendMessage(MessageProvider.getMessage("playernotfound", sender));
                 return false;
             }
 
             RepairCommandProvider.repairItemInHand(target);
 
-            sender.sendMessage(
-                    MessageProvider.getMessage("repairothers")
-                            .replaceAll("%player%", target.getDisplayName())
-            );
-
-            target.sendMessage(
-                    MessageProvider.getMessage("repairself")
-                            .replaceAll("%player%", target.getDisplayName())
-            );
+            sender.sendMessage(MessageProvider.getMessage("repairothers", sender, target));
+            target.sendMessage(MessageProvider.getMessage("repairotherstarget", sender, target));
 
             return true;
 
@@ -114,16 +99,13 @@ public class RepairCommand extends Command {
         Player player = (Player) sender;
 
         if (!player.hasPermission("essentials.repair.self")) {
-            player.sendMessage(MessageProvider.getMessage("noperm"));
+            player.sendMessage(MessageProvider.getMessage("noperm", player));
             return false;
         }
 
         RepairCommandProvider.repairItemInHand(player);
 
-        player.sendMessage(
-                MessageProvider.getMessage("repairself")
-                        .replaceAll("%player%", player.getDisplayName())
-        );
+        player.sendMessage(MessageProvider.getMessage("repairself", player));
 
         return true;
     }

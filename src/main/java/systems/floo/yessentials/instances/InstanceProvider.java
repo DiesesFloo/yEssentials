@@ -6,15 +6,20 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import systems.floo.yessentials.EssentialsPlugin;
 import systems.floo.yessentials.commands.CommandProvider;
-import systems.floo.yessentials.commands.feed.FeedCommand;
-import systems.floo.yessentials.commands.fly.FlyCommand;
-import systems.floo.yessentials.commands.fly.FlyCommandJoinListener;
-import systems.floo.yessentials.commands.godmode.GodModeCommand;
-import systems.floo.yessentials.commands.godmode.GodModeCommandDamageListener;
-import systems.floo.yessentials.commands.godmode.GodModeCommandFoodListener;
-import systems.floo.yessentials.commands.heal.HealCommand;
-import systems.floo.yessentials.commands.repair.RepairAllCommand;
-import systems.floo.yessentials.commands.repair.RepairCommand;
+import systems.floo.yessentials.commands.economy.balance.BalanceCommand;
+import systems.floo.yessentials.commands.economy.pay.PayCommand;
+import systems.floo.yessentials.commands.server.broadcast.BroadcastCommand;
+import systems.floo.yessentials.commands.player.feed.FeedCommand;
+import systems.floo.yessentials.commands.player.fly.FlyCommand;
+import systems.floo.yessentials.commands.player.fly.FlyCommandJoinListener;
+import systems.floo.yessentials.commands.player.godmode.GodModeCommand;
+import systems.floo.yessentials.commands.player.godmode.GodModeCommandDamageListener;
+import systems.floo.yessentials.commands.player.godmode.GodModeCommandFoodListener;
+import systems.floo.yessentials.commands.player.heal.HealCommand;
+import systems.floo.yessentials.commands.player.repair.RepairAllCommand;
+import systems.floo.yessentials.commands.player.repair.RepairCommand;
+import systems.floo.yessentials.config.ConfigStartupListener;
+import systems.floo.yessentials.economy.EconomyJoinListener;
 import systems.floo.yessentials.instances.interfaces.IStartupHandler;
 
 import java.util.ArrayList;
@@ -30,17 +35,18 @@ public class InstanceProvider {
     public static void registerAllInstances() {
         register(new FlyCommand());
         register(new FlyCommandJoinListener());
-
         register(new GodModeCommand());
         register(new GodModeCommandDamageListener());
         register(new GodModeCommandFoodListener());
-
         register(new HealCommand());
-
         register(new RepairAllCommand());
         register(new RepairCommand());
-
         register(new FeedCommand());
+        register(new BroadcastCommand());
+        register(new PayCommand());
+        register(new EconomyJoinListener());
+        register(new ConfigStartupListener());
+        register(new BalanceCommand());
     }
 
     /**

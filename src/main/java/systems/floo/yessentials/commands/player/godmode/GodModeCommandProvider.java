@@ -1,4 +1,4 @@
-package systems.floo.yessentials.commands.godmode;
+package systems.floo.yessentials.commands.player.godmode;
 
 import org.bukkit.entity.Player;
 
