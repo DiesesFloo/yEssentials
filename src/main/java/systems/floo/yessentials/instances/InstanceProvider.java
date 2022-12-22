@@ -8,6 +8,8 @@ import systems.floo.yessentials.EssentialsPlugin;
 import systems.floo.yessentials.commands.CommandProvider;
 import systems.floo.yessentials.commands.economy.balance.BalanceCommand;
 import systems.floo.yessentials.commands.economy.pay.PayCommand;
+import systems.floo.yessentials.commands.player.vanish.VanishCommand;
+import systems.floo.yessentials.commands.player.vanish.VanishCommandJoinListener;
 import systems.floo.yessentials.commands.server.broadcast.BroadcastCommand;
 import systems.floo.yessentials.commands.player.feed.FeedCommand;
 import systems.floo.yessentials.commands.player.fly.FlyCommand;
@@ -47,6 +49,8 @@ public class InstanceProvider {
         register(new EconomyJoinListener());
         register(new ConfigStartupListener());
         register(new BalanceCommand());
+        register(new VanishCommand());
+        register(new VanishCommandJoinListener());
     }
 
     /**
