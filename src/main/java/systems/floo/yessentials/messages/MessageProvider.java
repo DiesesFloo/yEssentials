@@ -7,9 +7,13 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import systems.floo.yessentials.config.ConfigProvider;
 import systems.floo.yessentials.economy.EconomyProvider;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 public class MessageProvider {
 
     private static final YamlConfiguration CONFIG = ConfigProvider.getCustomConfig("strings.yml");
+    private static final NumberFormat NUMBER_FORMAT = NumberFormat.getNumberInstance(Locale.ENGLISH); 
 
     /**
      * Returns the main prefix defined in config
@@ -124,7 +128,7 @@ public class MessageProvider {
      */
     public static String getMessage(String key, String name, double amount) {
         return getMessage(key, name)
-                .replace("%amount%", amount + EconomyProvider.getCurrencySign());
+                .replace("%amount%", NUMBER_FORMAT.format(amount) + EconomyProvider.getCurrencySign());
     }
 
     /**
@@ -154,7 +158,7 @@ public class MessageProvider {
      */
     public static String getMessage(String key, String name1, String name2, double amount) {
         return getMessage(key, name1, name2)
-                .replace("%amount%", amount + EconomyProvider.getCurrencySign());
+                .replace("%amount%", NUMBER_FORMAT.format(amount) + EconomyProvider.getCurrencySign());
     }
 
     /**
@@ -265,7 +269,7 @@ public class MessageProvider {
      */
     public static String getMessage(PrefixType prefixType, String key, String name, double amount) {
         return getMessage(prefixType, key, name)
-                .replace("%amount%", amount + EconomyProvider.getCurrencySign());
+                .replace("%amount%", NUMBER_FORMAT.format(amount) + EconomyProvider.getCurrencySign());
     }
 
     /**
@@ -300,7 +304,7 @@ public class MessageProvider {
     public static String getMessage(PrefixType prefixType, String key, String name1, String name2, double amount) {
         Bukkit.getLogger().info(amount + EconomyProvider.getCurrencySign());
         return getMessage(prefixType, key, name1, name2)
-                .replace("%amount%", String.valueOf(amount + EconomyProvider.getCurrencySign()));
+                .replace("%amount%", NUMBER_FORMAT.format(amount) + EconomyProvider.getCurrencySign());
     }
 
     /**
