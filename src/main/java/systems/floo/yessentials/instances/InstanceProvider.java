@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import systems.floo.yessentials.EssentialsPlugin;
 import systems.floo.yessentials.commands.CommandProvider;
+import systems.floo.yessentials.commands.economy.balance.BalanceCommand;
 import systems.floo.yessentials.commands.economy.pay.PayCommand;
 import systems.floo.yessentials.commands.server.broadcast.BroadcastCommand;
 import systems.floo.yessentials.commands.player.feed.FeedCommand;
@@ -45,6 +46,7 @@ public class InstanceProvider {
         register(new PayCommand());
         register(new EconomyJoinListener());
         register(new ConfigStartupListener());
+        register(new BalanceCommand());
     }
 
     /**

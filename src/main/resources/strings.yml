@@ -45,3 +45,5 @@ strings:
     economynonumber: "&7The given number is not a number"
     paysent: "&7You sent &2%amount% &7coins to &6%player2%&7."
     payreceived: "&7You received &2%amount% &7coins from &6%player1%&7."
+    balanceself: "&7Your balance: &2%amount%"
+    balanceothers: "&6%player2%'s &7balance: &2%amount%"
