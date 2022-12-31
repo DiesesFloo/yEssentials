@@ -47,3 +47,6 @@ strings:
     payreceived: "&7You received &2%amount% &7coins from &6%player1%&7."
     balanceself: "&7Your balance: &2%amount%"
     balanceothers: "&6%player2%'s &7balance: &2%amount%"
+    setmoneyself: "&7Your money was set to &2%amount%&7."
+    setmoneyothers: "&6%player2%'s &7money was set to &2%amount%&7."
+    setmoneyotherstarget: "&7Your money was set to &2%amount%&7."
