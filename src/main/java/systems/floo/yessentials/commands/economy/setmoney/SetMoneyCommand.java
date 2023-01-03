@@ -62,14 +62,14 @@ public class SetMoneyCommand extends Command {
 
             EconomyProvider.setCoins(targetUUID, amount);
 
-            sender.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "setmoneyself", sender.getName(), targetOfflinePlayer.getName()));
+            sender.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "addmoneyothers", sender.getName(), targetOfflinePlayer.getName()));
 
             if (!targetOfflinePlayer.isOnline()){
                 return true;
             }
 
             Player targetPlayer = targetOfflinePlayer.getPlayer();
-            targetPlayer.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "setmoneyself", sender, targetPlayer));
+            targetPlayer.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "addmoneyotherstarget", sender, targetPlayer));
 
             return true;
         }
