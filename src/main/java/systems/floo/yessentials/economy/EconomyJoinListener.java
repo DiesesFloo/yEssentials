@@ -9,6 +9,11 @@ import java.util.UUID;
 
 public class EconomyJoinListener implements Listener {
 
+    /**
+     * Method executed on player join
+     *
+     * @param event Join event
+     */
     @EventHandler
     public void handleJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();

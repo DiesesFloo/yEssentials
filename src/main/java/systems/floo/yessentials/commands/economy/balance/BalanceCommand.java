@@ -36,7 +36,7 @@ public class BalanceCommand extends Command {
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
         if (args.length >= 1) {
-            if (!sender.hasPermission("essentials.balance.others")) {
+            if (!sender.hasPermission("essentials.economy.balance.others")) {
                 sender.sendMessage(MessageProvider.getMessage(PrefixType.ECONOMY, "noperm", sender));
                 return false;
             }
