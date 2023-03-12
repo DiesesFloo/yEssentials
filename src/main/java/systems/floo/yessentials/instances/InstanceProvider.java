@@ -20,6 +20,8 @@ import systems.floo.yessentials.commands.player.godmode.GodModeCommandFoodListen
 import systems.floo.yessentials.commands.player.heal.HealCommand;
 import systems.floo.yessentials.commands.player.repair.RepairAllCommand;
 import systems.floo.yessentials.commands.player.repair.RepairCommand;
+import systems.floo.yessentials.commands.vanilla.tell.TellCommand;
+import systems.floo.yessentials.commands.vanilla.tell.TellCommandQuitListener;
 import systems.floo.yessentials.config.ConfigStartupListener;
 import systems.floo.yessentials.economy.EconomyJoinListener;
 import systems.floo.yessentials.instances.interfaces.IStartupHandler;
@@ -51,6 +53,9 @@ public class InstanceProvider {
         register(new BalanceCommand());
         register(new VanishCommand());
         register(new VanishCommandJoinListener());
+        register(new TellCommand());
+        register(new TellCommandQuitListener());
+
     }
 
     /**
