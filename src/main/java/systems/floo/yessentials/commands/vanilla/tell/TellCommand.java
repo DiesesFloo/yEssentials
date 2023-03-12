@@ -61,7 +61,7 @@ public class TellCommand extends Command {
             msg.append(args[i]).append(" ");
         }
 
-        TellCommandProvider.sendDirectMessage(player, target, msg.toString());
+        TellCommandProvider.sendPrivateMessage(player, target, msg.toString());
 
         return true;
     }

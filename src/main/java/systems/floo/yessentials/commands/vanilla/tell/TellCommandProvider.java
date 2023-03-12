@@ -70,7 +70,7 @@ public class TellCommandProvider {
      * @param target  The target of the private message
      * @param message The message content of the private message
      */
-    public static void sendDirectMessage(Player sender, Player target, String message) {
+    public static void sendPrivateMessage(Player sender, Player target, String message) {
         sender.sendMessage(MessageProvider.getMessage("privatemessagesent", sender, target).replace("%message%", message));
         target.sendMessage(MessageProvider.getMessage("privatemessagereceived", sender, target).replace("%message%", message));
 

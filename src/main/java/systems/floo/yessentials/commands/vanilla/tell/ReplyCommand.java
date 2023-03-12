@@ -50,7 +50,7 @@ public class ReplyCommand extends Command {
             msg.append(arg).append(" ");
         }
 
-        TellCommandProvider.sendDirectMessage(player, TellCommandProvider.getLastMessaged(player), msg.toString());
+        TellCommandProvider.sendPrivateMessage(player, TellCommandProvider.getLastMessaged(player), msg.toString());
 
         return true;
     }
