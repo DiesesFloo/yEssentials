@@ -1,4 +1,4 @@
-package systems.floo.yessentials.vanilla.tell;
+package systems.floo.yessentials.commands.vanilla.tell;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
@@ -9,13 +9,25 @@ import systems.floo.yessentials.messages.MessageProvider;
 import java.util.Arrays;
 
 public class TellCommand extends Command {
-    protected TellCommand() {
+
+    /**
+     * Defines command information
+     */
+    public TellCommand() {
         super("tell",
                 "Sends a private message to a player",
                 "",
                 Arrays.asList(new String[]{"msg", "message", "whisper", "w"}));
     }
 
+    /**
+     * Method executed on command execute
+     *
+     * @param sender       Source object which is executing this command
+     * @param commandLabel The alias of the command used
+     * @param args         All arguments passed to the command, split via ' '
+     * @return Value if the command is successful
+     */
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
 
@@ -49,7 +61,7 @@ public class TellCommand extends Command {
             msg.append(args[i]).append(" ");
         }
 
-        TellCommandProvider.sendDirectMessage(player, target, msg.toString());
+        TellCommandProvider.sendPrivateMessage(player, target, msg.toString());
 
         return true;
     }
