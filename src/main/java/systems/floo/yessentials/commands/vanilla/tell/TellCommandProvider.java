@@ -1,4 +1,4 @@
-package systems.floo.yessentials.vanilla.tell;
+package systems.floo.yessentials.commands.vanilla.tell;
 
 import org.apache.logging.log4j.message.Message;
 import org.bukkit.entity.Player;

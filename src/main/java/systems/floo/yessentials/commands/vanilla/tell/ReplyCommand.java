@@ -1,4 +1,4 @@
-package systems.floo.yessentials.vanilla.tell;
+package systems.floo.yessentials.commands.vanilla.tell;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
