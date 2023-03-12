@@ -7,6 +7,11 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class TellCommandQuitListener implements Listener {
 
+    /**
+     * Method executed on player quit
+     *
+     * @param event quit event
+     */
     @EventHandler
     public void handleQuit(PlayerQuitEvent event){
         Player player = event.getPlayer();
