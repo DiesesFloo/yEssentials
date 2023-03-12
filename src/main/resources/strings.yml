@@ -50,3 +50,8 @@ strings:
     setmoneyself: "&7Your money was set to &2%amount%&7."
     setmoneyothers: "&6%player2%'s &7money was set to &2%amount%&7."
     setmoneyotherstarget: "&7Your money was set to &2%amount%&7."
+    privatemessagereceived: "&8[&6%player1% &7» &cme&8] &7%message%"
+    privatemessagesent: "&8[&cme &7» &6%player2%&8] &7%message%"
+    replyerror: "&7There is no player to reply."
+    msgerror: "&7Please provide your message after the target player."
+    replymsgerror: "&7Please provide your message after the command."
