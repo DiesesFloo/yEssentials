@@ -9,7 +9,7 @@ import systems.floo.yessentials.messages.MessageProvider;
 import java.util.Arrays;
 
 public class TellCommand extends Command {
-    protected TellCommand() {
+    public TellCommand() {
         super("tell",
                 "Sends a private message to a player",
                 "",
