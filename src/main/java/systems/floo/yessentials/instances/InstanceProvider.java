@@ -6,8 +6,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import systems.floo.yessentials.EssentialsPlugin;
 import systems.floo.yessentials.commands.CommandProvider;
+import systems.floo.yessentials.commands.economy.addmoney.AddMoneyCommand;
 import systems.floo.yessentials.commands.economy.balance.BalanceCommand;
 import systems.floo.yessentials.commands.economy.pay.PayCommand;
+import systems.floo.yessentials.commands.economy.setmoney.SetMoneyCommand;
 import systems.floo.yessentials.commands.player.vanish.VanishCommand;
 import systems.floo.yessentials.commands.player.vanish.VanishCommandJoinListener;
 import systems.floo.yessentials.commands.server.broadcast.BroadcastCommand;
@@ -20,6 +22,7 @@ import systems.floo.yessentials.commands.player.godmode.GodModeCommandFoodListen
 import systems.floo.yessentials.commands.player.heal.HealCommand;
 import systems.floo.yessentials.commands.player.repair.RepairAllCommand;
 import systems.floo.yessentials.commands.player.repair.RepairCommand;
+import systems.floo.yessentials.commands.vanilla.tell.ReplyCommand;
 import systems.floo.yessentials.commands.vanilla.tell.TellCommand;
 import systems.floo.yessentials.commands.vanilla.tell.TellCommandQuitListener;
 import systems.floo.yessentials.config.ConfigStartupListener;
@@ -55,6 +58,7 @@ public class InstanceProvider {
         register(new VanishCommandJoinListener());
         register(new TellCommand());
         register(new TellCommandQuitListener());
+        register(new ReplyCommand());
 
     }
 
