@@ -2,6 +2,7 @@ package systems.floo.yessentials.commands.vanilla.tell;
 
 import org.bukkit.entity.Player;
 import systems.floo.yessentials.messages.MessageProvider;
+import systems.floo.yessentials.messages.PrefixType;
 
 import java.util.HashMap;
 
@@ -71,8 +72,8 @@ public class TellCommandProvider {
      * @param message The message content of the private message
      */
     public static void sendPrivateMessage(Player sender, Player target, String message) {
-        sender.sendMessage(MessageProvider.getMessage("privatemessagesent", sender, target).replace("%message%", message));
-        target.sendMessage(MessageProvider.getMessage("privatemessagereceived", sender, target).replace("%message%", message));
+        sender.sendMessage(MessageProvider.getMessage(PrefixType.NONE, "privatemessagesent", sender, target).replace("%message%", message));
+        target.sendMessage(MessageProvider.getMessage(PrefixType.NONE, "privatemessagereceived", sender, target).replace("%message%", message));
 
         setLastMessaged(sender, target);
         setLastMessaged(target, sender);

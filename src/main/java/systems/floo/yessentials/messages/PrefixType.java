@@ -3,7 +3,8 @@ package systems.floo.yessentials.messages;
 public enum PrefixType {
     MAIN("main"),
     BROADCAST("broadcast"),
-    ECONOMY("economy");
+    ECONOMY("economy"),
+    NONE("none");
 
     private final String key;
 

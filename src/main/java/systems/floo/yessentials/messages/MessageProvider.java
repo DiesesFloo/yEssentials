@@ -13,7 +13,7 @@ import java.util.Locale;
 public class MessageProvider {
 
     private static final YamlConfiguration CONFIG = ConfigProvider.getCustomConfig("strings.yml");
-    private static final NumberFormat NUMBER_FORMAT = NumberFormat.getNumberInstance(Locale.ENGLISH); 
+    private static final NumberFormat NUMBER_FORMAT = NumberFormat.getNumberInstance(Locale.ENGLISH);
 
     /**
      * Returns the main prefix defined in config
@@ -32,6 +32,7 @@ public class MessageProvider {
      * @return The prefix with the given key
      */
     public static String getPrefix(String key) {
+        if (key == "none") return "";
         return ChatColor.translateAlternateColorCodes('&',
                 CONFIG.getString("strings.prefixes." + key));
     }
@@ -44,6 +45,7 @@ public class MessageProvider {
      * @return The prefix of the given type
      */
     public static String getPrefix(PrefixType prefixType) {
+        if (prefixType == PrefixType.NONE) return "";
         return getPrefix(prefixType.getKey());
     }
 
