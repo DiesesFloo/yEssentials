@@ -1,5 +1,6 @@
 package systems.floo.yessentials.commands.vanilla.tell;
 
+import lombok.Getter;
 import org.bukkit.entity.Player;
 import systems.floo.yessentials.messages.MessageProvider;
 import systems.floo.yessentials.messages.PrefixType;
@@ -8,6 +9,7 @@ import java.util.HashMap;
 
 public class TellCommandProvider {
 
+    @Getter
     private static HashMap<Player, Player> lastMessagedMap = new HashMap<>();
 
     /**
@@ -18,15 +20,6 @@ public class TellCommandProvider {
      */
     public static void setLastMessaged(Player player, Player messaged) {
         lastMessagedMap.put(player, messaged);
-    }
-
-    /**
-     * Returns the map with the players and their last messaged player
-     *
-     * @return The map with the last messaged players
-     */
-    public static HashMap<Player, Player> getLastMessagedMap() {
-        return lastMessagedMap;
     }
 
     /**
