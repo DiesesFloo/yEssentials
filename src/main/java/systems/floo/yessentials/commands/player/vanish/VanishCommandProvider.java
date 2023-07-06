@@ -1,5 +1,6 @@
 package systems.floo.yessentials.commands.player.vanish;
 
+import lombok.Getter;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -11,16 +12,9 @@ import java.util.UUID;
 public class VanishCommandProvider {
 
     private static final JavaPlugin PLUGIN = EssentialsPlugin.getPlugin();
-    private static ArrayList<UUID> vanishedPlayers = new ArrayList<>();
 
-    /**
-     * Returns the list of the players in fly mode
-     *
-     * @return List of players in fly mode
-     */
-    public static ArrayList<UUID> getVanishedPlayers() {
-        return vanishedPlayers;
-    }
+    @Getter
+    private static ArrayList<UUID> vanishedPlayers = new ArrayList<>();
 
     /**
      * Checks if a player is in fly mode

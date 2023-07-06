@@ -1,10 +1,12 @@
 package systems.floo.yessentials;
 
+import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 import systems.floo.yessentials.instances.InstanceProvider;
 
 public final class EssentialsPlugin extends JavaPlugin {
 
+    @Getter
     private static JavaPlugin plugin;
 
     /**
@@ -17,14 +19,5 @@ public final class EssentialsPlugin extends JavaPlugin {
         plugin = this;
 
         InstanceProvider.registerAllInstances();
-    }
-
-    /**
-     * Returns the main class in form of {@link JavaPlugin} object.
-     *
-     * @return Plugin object of main
-     */
-    public static JavaPlugin getPlugin() {
-        return plugin;
     }
 }

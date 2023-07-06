@@ -1,5 +1,6 @@
 package systems.floo.yessentials.commands.player.fly;
 
+import lombok.Getter;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -7,16 +8,9 @@ import java.util.UUID;
 
 public class FlyCommandProvider {
 
+    @Getter
     private static ArrayList<UUID> flyers = new ArrayList<>();
 
-    /**
-     * Returns the list of the players in fly mode
-     *
-     * @return List of players in fly mode
-     */
-    public static ArrayList<UUID> getFlyers() {
-        return flyers;
-    }
 
     /**
      * Checks if a player is in fly mode

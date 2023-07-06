@@ -1,5 +1,6 @@
 package systems.floo.yessentials.commands.player.godmode;
 
+import lombok.Getter;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -7,16 +8,8 @@ import java.util.UUID;
 
 public class GodModeCommandProvider {
 
+    @Getter
     private static ArrayList<UUID> godPlayers = new ArrayList<>();
-
-    /**
-     * Returns the list of the players in god mode
-     *
-     * @return List of players in god mode
-     */
-    public static ArrayList<UUID> getGodPlayers() {
-        return godPlayers;
-    }
 
     /**
      * Checks if a player is in god mode
